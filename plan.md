@@ -139,30 +139,17 @@ cp -p TSP/concorde LINKERN/linkern TOOLS/* ../install/bin/
 
 ---
 
-## 5. Deterministic Evaluation Dataset
+## 5. Deterministic Evaluation Datasets
 
-Persistent benchmark instances live in `data/eval/` with metadata-driven discovery.
+All benchmark instances live under `data/eval/` and are discovered via `data/eval/metadata.json`. Each entry records the instance id, relative file path, node count, generator metadata, and the `split` label used by evaluation scripts.
 
-- `metadata.json` schema:
-  ```json
-  {
-    "instances": [
-      {
-        "id": "toy20_uniform_seed202510280",
-        "file": "toy20_uniform_seed202510280.tsp",
-        "n": 20,
-        "seed": 202510280,
-        "generator": "uniform_int_square",
-        "distribution": "uniform_square_int_unique",
-        "split": "toy20",
-        "description": "..."
-      }
-    ]
-  }
-  ```
-- The initial “toy20” split contains ten 20-city Euclidean problems generated via `random.randint` with unique coordinates. Files are committed to version control and should not be regenerated.
+Current maintained splits:
 
-**Extending datasets:** add a generator script (`scripts/make_eval_instances.py` in future) that accepts a spec (size, distribution, seeds) and appends new files + metadata entries atomically. Never overwrite existing IDs.
+- **toy20** – ten 20-city Euclidean problems (unique integer coordinates). These are the original “smoke test” instances; Concorde solves them instantly at the root.
+- **toy200** – ten 200-city Euclidean problems. GEPA’s simple threshold tweak improved linkern’s runtime (~9 ms → ~9.1 ms) even though branch-and-bound still stops at the root.
+- **tsplib_random** – three explicit-weight “TSPLIB-style” instances (200/300/400 nodes) that force branch-and-bound to explore deeper trees (average bbnodes > 1). Generated via `random.randint` into FULL_MATRIX format because direct TSPLIB downloads are blocked in this environment. The helper `scripts/add_tsplib_eval.py` can register additional `.tsp` files if we obtain real TSPLIB instances later.
+
+To add more problems, append entries to `metadata.json` (or use the helper scripts) and give them a unique `split` label. Never overwrite existing IDs; the evaluation harness assumes entries are immutable.
 
 ---
 
@@ -222,15 +209,15 @@ Avoid running candidates directly in the canonical source tree to prevent concur
    ```bash
    make -C "$SANDBOX_DIR/concorde/concorde" -j"$(nproc)"
    ```
-4. Run evaluations using the sandbox binary:
+4. Run evaluations using the sandbox binary (choose the target split explicitly, e.g. `toy200` or `tsplib_random`):
    ```bash
    python3 scripts/run_concorde_eval.py \
        --binary "$SANDBOX_DIR/concorde/install/bin/concorde" \
        --metadata /home/rnarad/GEPA_TSP/data/eval/metadata.json \
-       --split toy20 \
+       --split toy200 \
        --label candidate_<id>
    ```
-5. Copy artifacts (candidate code, build log, run directory) back into the main repo under `runs/<candidate-id>/`.
+5. Copy artifacts (candidate code, build log, run directory) back into the main repo under an archival folder (see GEPA automation below for current layout).
 6. Remove sandbox when finished to reclaim disk: `rm -rf "$SANDBOX_DIR"`.
 
 Advantages:
@@ -255,28 +242,33 @@ evaluate_candidate(
 )
 ```
 
-Return structure includes build logs, evaluation stdout/stderr, the run_dir path, and summary metrics. Persisted artifacts (`candidate_linkern_block.c`, `build.log`, concorde outputs) live under `runs/eval/<timestamp>_<label>/`.
+Return structure includes build logs, evaluation stdout/stderr, the `run_dir` path, and summary metrics. When GEPA invokes it we now pass a dedicated `run_root`, so artifacts end up under `runs/gepa/<timestamp>_<label>/eval/.../` with the top-level run directory consolidating baseline, candidate, and log outputs.
 
 `scripts/evaluate_heuristic_candidate.py` wraps this for CLI usage, accepting candidate code from a file/STDIN or evaluating the default block (`--use-default`). Use it for manual smoke tests or to wire GEPA quickly before a custom metric.
 
 `src/gepa_metric.py` builds on this, providing `evaluate_and_score(...)` that returns `(score, feedback, result)` where the score is `-average_wall_time_sec` and the feedback string summarizes status, metrics, tail of build/evaluation logs, and artifact path—perfect input for DSPy’s `ScoreWithFeedback`.
 
+Additional helpers:
+- `scripts/run_gepa_tsplib.sh` – one-shot 10 step GEPA session against `tsplib_random`; produces a consolidated run directory plus an automatically generated rollout plot.
+- `scripts/plot_gepa_metrics.py` – post-hoc visualization tool (scatter plot of average wall time vs GEPA iteration) for any run directory.
+
 ---
 
 ## 8. Testing & Validation Checklist
 
-- `concorde/install/bin/concorde` solves `5city.tsp` and `data/eval/toy20_*` instances without errors.
-- `scripts/run_concorde_eval.py --split toy20` produces consistent metrics across repeated runs.
+- `concorde/install/bin/concorde` solves the bundled `5city.tsp`, the toy20 set, and the explicit-weight splits without errors.
+- `scripts/run_concorde_eval.py --split <split>` matches expectations across `toy20`, `toy200`, and `tsplib_random` (check wall times and `bbnodes`).
 - Sandboxed builds replicate the same results (no path dependencies).
-- `data/eval/metadata.json` remains sorted and stable (validate via CI script later).
+- `data/eval/metadata.json` stays alphabetically sorted; verify changes via review script/CI.
+- GEPA end-to-end: `./scripts/run_gepa_tsplib.sh` completes, produces staged artifacts under `runs/gepa/<timestamp>_tsplib_run/`, and emits `gepa_plot.png` with reasonable metrics.
 
 ---
 
 ## 9. Next Enhancements
 
-1. Provide a formal `scripts/make_eval_instances.py` for expanding datasets.
-2. Implement caching and result deduplication keyed by (candidate hash, dataset split).
-3. Build higher-variance benchmark splits (e.g., 50/100-node, non-uniform distributions).
-4. Investigate additional Concorde metrics (e.g., number of kicks, LK iterations) for richer feedback.
+1. Source real TSPLIB instances (once networking hurdles are resolved) and register them via `scripts/add_tsplib_eval.py` so we can benchmark against canonical problems.
+2. Implement caching and result deduplication keyed by (candidate hash, dataset split) to avoid re-running identical candidates.
+3. Provide a parameterized instance generator script for future splits (currently done via ad-hoc snippets).
+4. Investigate richer metrics (e.g., LK iteration counts, cut counts) to augment wall-time and bbnodes in GEPA feedback.
 
 Keep this document updated whenever the workflow changes so the Linux setup remains reproducible.
