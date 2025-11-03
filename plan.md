@@ -1,0 +1,282 @@
+# Concorde + QSopt + GEPA Integration Plan (Linux)
+
+This guide captures the current end-to-end workflow for building Concorde with local QSopt support, maintaining deterministic evaluation datasets, and running GEPA-driven heuristic experimentation in isolated sandboxes.
+
+---
+
+## 1. Prerequisites
+
+Tested on Ubuntu 22.04. Install build and Python tooling:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+    build-essential clang make autoconf automake libtool pkg-config \
+    gfortran libgmp-dev libbz2-dev zlib1g-dev \
+    python3 python3-venv python3-pip curl git rsync
+```
+
+Optional Python venv:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+```
+
+---
+
+## 2. Repository Layout (authoritative)
+
+```
+GEPA_TSP/
+├── concorde/                # Concorde source tree + build artifacts
+│   ├── concorde/            # extracted co031219 sources
+│   └── install/             # staging area for rebuilt binaries
+├── qsopt/                   # QSopt sources and local installs
+│   ├── src/                 # qsopt_ex source tree (for local builds)
+│   ├── install/             # qsopt_ex installation prefix
+│   └── original/            # copy of pre-existing qsopt.a/qsopt.h
+├── data/
+│   └── eval/                # persistent evaluation datasets + metadata
+├── runs/                    # per-evaluation artifacts (gitignored)
+├── scripts/                 # helper scripts (build, evaluation, sandbox workflow)
+└── plan.md                  # this document (keep updated)
+```
+
+`runs/`, build directories, and sandboxes stay out of version control.
+
+---
+
+## 3. QSopt Options
+
+### 3.1 Local qsopt_ex Build (preferred for reproducibility)
+
+1. Download unpacked Debian tarball (working mirrors as of Oct 2025):
+   ```bash
+   curl -L -o qsopt-ex.tar.gz https://deb.debian.org/debian/pool/main/q/qsopt-ex/qsopt-ex_2.5.10.3.orig.tar.gz
+   tar -xzf qsopt-ex.tar.gz
+   mv qsopt-ex-2.5.10.3 qsopt/src
+   ```
+2. Bootstrap and configure with prefix:
+   ```bash
+   cd qsopt/src
+   ./bootstrap
+   ./configure --prefix="$(pwd)/../install"
+   ```
+3. **Patch requirement:** `qsopt_ex/trace.h` is missing an `ILL_IFTRACE2` definition in release 2.5.10.3. Ensure the following block appears:
+   ```c
+   #ifndef NDEBUG
+   #define ILL_IFTRACE        if (TRACE) QSlog
+   #define ILL_IFTRACE2       if (TRACE > 1) QSlog
+   #define ILL_IFDOTRACE      if (TRACE)
+   #else
+   #define ILL_IFTRACE        if (0) QSlog
+   #define ILL_IFTRACE2       if (0) QSlog
+   #define ILL_IFDOTRACE      if (0)
+   #endif
+   ```
+4. Build and install:
+   ```bash
+   make -j"$(nproc)"
+   make install
+   ```
+5. Sanity-check:
+   ```bash
+   ../install/bin/esolver --help | head
+   ```
+
+### 3.2 Legacy QSopt Library (Concorde compatibility)
+
+Copy the machine’s existing QSopt static library/header into the project to avoid mutating system installs:
+
+```bash
+mkdir -p qsopt/original
+cp -p /home/rnarad/qsopt/qsopt.a qsopt/original/
+cp -p /home/rnarad/qsopt/qsopt.h qsopt/original/
+```
+
+Concorde links against this archival copy by default (`--with-qsopt=qsopt/original`).
+
+---
+
+## 4. Concorde Build & Staging
+
+1. Fetch sources:
+   ```bash
+   curl -L -o concorde.tar.gz https://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz
+   tar -xzf concorde.tar.gz -C concorde
+   ```
+2. Configure to link against the local QSopt archive:
+   ```bash
+   cd concorde/concorde
+   ./configure --with-qsopt=/home/rnarad/GEPA_TSP/qsopt/original --prefix="$(pwd)/../install"
+   ```
+3. Build:
+   ```bash
+   make -j"$(nproc)"
+   ```
+4. Manually stage binaries (Concorde lacks `make install`):
+   ```bash
+   mkdir -p ../install/bin ../install/include ../install/share/concorde/examples
+   cp -p TSP/concorde LINKERN/linkern TOOLS/* ../install/bin/
+   cp -p concorde.h ../install/include/
+   ```
+5. Provide minimal smoke test instance (already added):
+   - `concorde/install/share/concorde/examples/5city.tsp`
+6. Verify:
+   ```bash
+   concorde/install/bin/concorde concorde/install/share/concorde/examples/5city.tsp
+   ```
+
+Rebuild workflow after editing sources:
+
+```bash
+cd concorde/concorde
+make -j"$(nproc)"
+cp -p TSP/concorde LINKERN/linkern TOOLS/* ../install/bin/
+```
+
+---
+
+## 5. Deterministic Evaluation Dataset
+
+Persistent benchmark instances live in `data/eval/` with metadata-driven discovery.
+
+- `metadata.json` schema:
+  ```json
+  {
+    "instances": [
+      {
+        "id": "toy20_uniform_seed202510280",
+        "file": "toy20_uniform_seed202510280.tsp",
+        "n": 20,
+        "seed": 202510280,
+        "generator": "uniform_int_square",
+        "distribution": "uniform_square_int_unique",
+        "split": "toy20",
+        "description": "..."
+      }
+    ]
+  }
+  ```
+- The initial “toy20” split contains ten 20-city Euclidean problems generated via `random.randint` with unique coordinates. Files are committed to version control and should not be regenerated.
+
+**Extending datasets:** add a generator script (`scripts/make_eval_instances.py` in future) that accepts a spec (size, distribution, seeds) and appends new files + metadata entries atomically. Never overwrite existing IDs.
+
+---
+
+## 6. Evaluation Runner
+
+`scripts/run_concorde_eval.py` orchestrates benchmarking:
+
+```bash
+python3 scripts/run_concorde_eval.py \
+    --binary concorde/install/bin/concorde \
+    --metadata data/eval/metadata.json \
+    --split toy20 \
+    --repeats 3 \
+    --label baseline
+```
+
+Features:
+- Filters by `--split` or explicit `--ids`; optional `--max-instances`.
+- Captures wall-clock runtime, Concorde’s reported total time, branch-and-bound nodes, bounds, and LP progression.
+- Saves artifacts under `runs/eval/<timestamp>_<label>/`:
+  - `config.json` – binary path, selected instances, repeats, env metadata.
+  - `results.jsonl` – per-instance structured output (stdout/stderr included).
+  - `instances/<id>_rN.stdout/.stderr` – raw logs.
+  - `summary.json` – aggregate metrics.
+- Gracefully handles timeouts (`--timeout`), parse failures, and missing files.
+
+Use this runner both manually and from the GEPA bridge to keep metrics consistent.
+
+---
+
+## 7. GEPA Candidate Evaluation Pipeline
+
+### 7.1 Sentinel-Based Code Replacement
+
+Instrument `concorde/concorde/LINKERN/linkern.c` with clear markers (planned):
+
+```c
+/* BEGIN LLM HEURISTIC BLOCK */
+... // default implementation
+/* END LLM HEURISTIC BLOCK */
+```
+
+Scripts can surgically swap only the enclosed region, minimizing merge noise and simplifying restoration.
+
+### 7.2 Sandbox Architecture (per candidate)
+
+Avoid running candidates directly in the canonical source tree to prevent concurrent interference:
+
+1. Baseline copy:
+   ```bash
+   SANDBOX_DIR=/tmp/gepa/<candidate-id>
+   rsync -a --exclude 'runs' --exclude '.git' --exclude 'sandboxes' \
+       /home/rnarad/GEPA_TSP/ "$SANDBOX_DIR/"
+   ```
+2. Inject candidate snippet into the sandbox’s `linkern.c` (between sentinel comments).
+3. Rebuild within the sandbox:
+   ```bash
+   make -C "$SANDBOX_DIR/concorde/concorde" -j"$(nproc)"
+   ```
+4. Run evaluations using the sandbox binary:
+   ```bash
+   python3 scripts/run_concorde_eval.py \
+       --binary "$SANDBOX_DIR/concorde/install/bin/concorde" \
+       --metadata /home/rnarad/GEPA_TSP/data/eval/metadata.json \
+       --split toy20 \
+       --label candidate_<id>
+   ```
+5. Copy artifacts (candidate code, build log, run directory) back into the main repo under `runs/<candidate-id>/`.
+6. Remove sandbox when finished to reclaim disk: `rm -rf "$SANDBOX_DIR"`.
+
+Advantages:
+- Supports true parallelism (no races on object files or binaries).
+- Maintains a pristine reference tree.
+- Keeps each candidate’s artifacts self-contained.
+
+### 7.3 Automation Hooks
+
+`src/heuristic_bridge.py` exposes:
+
+```python
+evaluate_candidate(
+    code: Optional[str],
+    label: str,
+    split: str = "toy20",
+    repeats: int = 1,
+    timeout: Optional[float] = None,
+    sandbox_root: Optional[Path] = None,
+    keep_sandbox: bool = False,
+    environment: Optional[Dict[str, Any]] = None,
+)
+```
+
+Return structure includes build logs, evaluation stdout/stderr, the run_dir path, and summary metrics. Persisted artifacts (`candidate_linkern_block.c`, `build.log`, concorde outputs) live under `runs/eval/<timestamp>_<label>/`.
+
+`scripts/evaluate_heuristic_candidate.py` wraps this for CLI usage, accepting candidate code from a file/STDIN or evaluating the default block (`--use-default`). Use it for manual smoke tests or to wire GEPA quickly before a custom metric.
+
+`src/gepa_metric.py` builds on this, providing `evaluate_and_score(...)` that returns `(score, feedback, result)` where the score is `-average_wall_time_sec` and the feedback string summarizes status, metrics, tail of build/evaluation logs, and artifact path—perfect input for DSPy’s `ScoreWithFeedback`.
+
+---
+
+## 8. Testing & Validation Checklist
+
+- `concorde/install/bin/concorde` solves `5city.tsp` and `data/eval/toy20_*` instances without errors.
+- `scripts/run_concorde_eval.py --split toy20` produces consistent metrics across repeated runs.
+- Sandboxed builds replicate the same results (no path dependencies).
+- `data/eval/metadata.json` remains sorted and stable (validate via CI script later).
+
+---
+
+## 9. Next Enhancements
+
+1. Provide a formal `scripts/make_eval_instances.py` for expanding datasets.
+2. Implement caching and result deduplication keyed by (candidate hash, dataset split).
+3. Build higher-variance benchmark splits (e.g., 50/100-node, non-uniform distributions).
+4. Investigate additional Concorde metrics (e.g., number of kicks, LK iterations) for richer feedback.
+
+Keep this document updated whenever the workflow changes so the Linux setup remains reproducible.

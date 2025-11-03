@@ -1,0 +1,242 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:593: checking host system type
+configure:619: checking for prespecified compiler options
+configure:716: checking for gcc
+configure:829: checking whether the C compiler (/home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs) works
+configure:845: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c  1>&5
+configure:842:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  842 |   done
+      | ^ ~~
+configure:871: checking whether the C compiler (/home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs) is a cross-compiler
+configure:876: checking whether we are using GNU C
+configure:885: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -E conftest.c
+configure:904: checking whether /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc accepts -g
+configure:936: checking whether make sets ${MAKE}
+configure:965: checking for ranlib
+configure:997: checking for sh
+configure:1041: checking for file suffixes
+configure:1176: checking for sqrt in -lm
+configure:1195: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -lm   1>&5
+configure:1188:6: warning: conflicting types for built-in function 'sqrt'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+ 1188 | echo "configure:1176: checking for sqrt in -lm" >&5
+      |      ^~~~
+configure:1185:1: note: 'sqrt' is declared in header '<math.h>'
+ 1184 |       fi
+  +++ |+#include <math.h>
+ 1185 |    fi
+configure:1225: checking for -lnsl
+configure:1242: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -lm  1>&5
+configure:1294: checking for -lsocket
+configure:1311: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -lm  1>&5
+configure:1361: checking for bfd_open_file in -lbfd
+configure:1380: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -lbfd  -lm  1>&5
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: /home/rnarad/anaconda3/lib/libbfd.a(cache.o): in function `bfd_open_file':
+(.text.bfd_open_file+0x11a): undefined reference to `unlink_if_ordinary'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: /home/rnarad/anaconda3/lib/libbfd.a(bfd.o): in function `bfd_errmsg':
+(.text.bfd_errmsg+0x5a): undefined reference to `xstrerror'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: /home/rnarad/anaconda3/lib/libbfd.a(bfd.o): in function `error_handler_internal':
+(.text.error_handler_internal+0x1fc): undefined reference to `_sch_istable'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: (.text.error_handler_internal+0x266): undefined reference to `_sch_istable'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: (.text.error_handler_internal+0x34b): undefined reference to `_sch_istable'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: (.text.error_handler_internal+0x39d): undefined reference to `_sch_istable'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: (.text.error_handler_internal+0x3d8): undefined reference to `_sch_istable'
+/home/rnarad/anaconda3/bin/../lib/gcc/x86_64-conda-linux-gnu/11.2.0/../../../../x86_64-conda-linux-gnu/bin/ld: /home/rnarad/anaconda3/lib/libbfd.a(bfd.o):(.text.error_handler_internal+0x717): more undefined references to `_sch_istable' follow
+collect2: error: ld returned 1 exit status
+configure: failed program was:
+#line 1369 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char bfd_open_file();
+
+int main() {
+bfd_open_file()
+; return 0; }
+configure:1408: checking for xstrerror in -liberty
+configure:1427: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty  -lm  1>&5
+configure:1678: checking how to run the C preprocessor
+configure:1758: checking for ANSI C header files
+configure:1771: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1838: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure: In function 'main':
+configure:1833:67: warning: implicit declaration of function 'exit' [-Wimplicit-function-declaration]
+ 1833 | 
+      |                                                                   ^   
+configure:1829:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
+ 1828 |    cat >> confdefs.h <<\EOF
+  +++ |+#include <stdlib.h>
+ 1829 | #define CC_SIGNAL_BEFORE_PTHREAD 1
+configure:1833:67: warning: incompatible implicit declaration of built-in function 'exit' [-Wbuiltin-declaration-mismatch]
+ 1833 | 
+      |                                                                   ^   
+configure:1833:67: note: include '<stdlib.h>' or provide a declaration of 'exit'
+configure:1834:1: warning: incompatible implicit declaration of built-in function 'exit' [-Wbuiltin-declaration-mismatch]
+ 1834 | fi
+      | ^~  
+configure:1834:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
+configure:1862: checking whether time.h and sys/time.h may both be included
+configure:1876: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:1900: checking for stdlib.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for math.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for string.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for strings.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for errno.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for assert.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/time.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for time.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for stddef.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for unistd.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for malloc.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/types.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/stat.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for fcntl.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for signal.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/socket.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for netinet/in.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for netdb.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/resource.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/param.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:1900: checking for sys/times.h
+configure:1910: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cpp -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c >/dev/null 2>conftest.out
+configure:2001: checking for working const
+configure:2055: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:2078: checking for void
+configure:2090: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:2111: checking for size_t
+configure:2144: checking for pid_t
+configure:2177: checking return type of signal handlers
+configure:2199: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:2218: checking for u_char
+configure:2254: checking for missing printf prototype
+configure:2266: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure: In function 'main':
+configure:2262:8: error: incompatible type for argument 1 of 'printf'
+ 2262 |   echo $ac_n "(cached) $ac_c" 1>&6
+      |        ^~~
+      |        |
+      |        double
+In file included from /home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/stdio.h:937,
+                 from configure:2260:
+/home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/bits/stdio2.h:102:32: note: expected 'const char * restrict' but argument is of type 'double'
+  102 | printf (const char *__restrict __fmt, ...)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+configure: failed program was:
+#line 2259 "configure"
+#include "confdefs.h"
+#include <stdio.h>
+int main() {
+printf(3.0)
+; return 0; }
+configure:2290: checking for missing gethostname prototype
+configure:2305: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure: In function 'main':
+configure:2301:13: error: incompatible type for argument 1 of 'gethostname'
+ 2301 | EOF
+      |             ^  
+      |             |
+      |             double
+In file included from /home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/features.h:375,
+                 from /home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/unistd.h:25,
+                 from configure:2298:
+/home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/bits/unistd.h:344:1: note: expected 'char *' but argument is of type 'double'
+  344 | __NTH (gethostname (char *__buf, size_t __buflen))
+      | ^~~~~
+configure:2301:1: error: too few arguments to function 'gethostname'
+ 2301 | EOF
+      | ^~~        
+In file included from /home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/features.h:375,
+                 from /home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/unistd.h:25,
+                 from configure:2298:
+/home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/bits/unistd.h:344:1: note: declared here
+  344 | __NTH (gethostname (char *__buf, size_t __buflen))
+      | ^~~~~
+configure: failed program was:
+#line 2295 "configure"
+#include "confdefs.h"
+
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+int main() {
+gethostname(3.0)
+; return 0; }
+configure:2329: checking for missing getrusage prototype
+configure:2356: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure: In function 'main':
+configure:2352:1: error: too few arguments to function 'getrusage'
+ 2352 |   cat > conftest.$ac_ext <<EOF
+      | ^ ~~~~~~~
+In file included from configure:2349:
+/home/rnarad/anaconda3/x86_64-conda-linux-gnu/sysroot/usr/include/sys/resource.h:88:12: note: declared here
+   88 | extern int getrusage (__rusage_who_t __who, struct rusage *__usage) __THROW;
+      |            ^~~~~~~~~
+configure: failed program was:
+#line 2334 "configure"
+#include "confdefs.h"
+
+#ifdef TIME_WITH_SYS_TIME
+# include <sys/time.h>
+# include <time.h>
+#else
+# ifdef HAVE_SYS_TIME_H
+#  include <sys/time.h>
+# else
+#  ifdef HAVE_TIME_H
+#   include <time.h>
+#  endif
+# endif
+#endif
+#ifdef HAVE_SYS_RESOURCE_H
+#include <sys/resource.h>
+#endif
+int main() {
+getrusage(3.0)
+; return 0; }
+configure:2382: checking usable sigaction()
+configure:2404: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:2474: checking for __attribute__
+configure:2486: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -c -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include conftest.c 1>&5
+configure:2554: checking for gethostname
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for socket
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for strdup
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2566:6: warning: conflicting types for built-in function 'strdup'; expected 'char *(const char *)' [-Wbuiltin-declaration-mismatch]
+ 2566 | s%@datadir@%$datadir%g
+      |      ^~~~~~
+configure:2554: checking for getrusage
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for times
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for clock
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for sleep
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for sigaction
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5
+configure:2554: checking for signal
+configure:2582: /home/rnarad/anaconda3/bin/x86_64-conda-linux-gnu-cc -o conftest -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/rnarad/anaconda3/include  -I/home/rnarad/anaconda3/targets/x86_64-linux/include -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/home/rnarad/anaconda3/lib -Wl,-rpath-link,/home/rnarad/anaconda3/lib -L/home/rnarad/anaconda3/lib  -L/home/rnarad/anaconda3/targets/x86_64-linux/lib -L/home/rnarad/anaconda3/targets/x86_64-linux/lib/stubs conftest.c -liberty -lm  1>&5

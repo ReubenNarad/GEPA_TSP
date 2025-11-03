@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="Keywords" content="linear programming, linear optimization">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<SCRIPT LANGUAGE="JavaScript" src=../qsopt.js>
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+qs_path = ".."; 
+qs_doc_start('Downloads');
+qs_doc_headline("Downloads QSopt 1.0"); 
+qs_body_start(true);
+html(); 
+</SCRIPT>
+&nbsp; &nbsp;
+QSopt Version 1.0 is now available 
+for Windows 98/ME/NT/2000/XP, 
+RedHat Linux 8.0, 
+and Solaris on  32-bit and 64-bit SPARC platforms.  
+On all platforms QSopt is available as: 
+<UL> 
+<LI> as an executable, which reads linear programming problems from an input file and solves the given problem and 
+<LI> as a C header file and archive/dynamic link function library, which can be used by developers to write their own linear programming applications. 
+The function library's documentation is available separately as a pdf document. 
+</UL>
+On Windows QSopt includes a graphical user interface as well. For more information on the software see <a href=../software/software.htm>Software</a>. 
+<b>To download software, right click on the link (to save as a file).</b>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+wd(qs_table_start(0));
+
+wd('<tr><td colspan=2>' + qs_ref("QSopt Reference Manual", "users.pdf") + '</td>'); 
+wd(qs_spacer_col(16, 1)); 
+wd('<td>PDF format document</td></tr>'); 
+
+wd(qs_spacer_row(1, 16)); 
+wd('<tr><td colspan=2><a name="JAVA"></a>Java </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+	'<td>' + 
+	qs_ref("qsopt.jar", "codes/java/qsopt.jar") + '</td>'+ 
+         qs_spacer_col(8, 1) + 
+	'<td>Java implementation of alpha Version <a href=../software/java.htm> see further info </a></td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+	'<td>' + 
+	qs_ref("qsdoc.zip", "codes/java/qsdoc.zip") + '</td>'+ 
+         qs_spacer_col(8, 1) + 
+	 '<td>Java API Documentation, ' + 
+		 qs_ref("see online", "../lib/java/index.html") + 
+         '</td></tr>');
+
+// Windows 
+wd(qs_spacer_row(1, 16)); 
+wd('<tr><td colspan=2> Windows 98/ME/NT/2000/XP </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt_setup.exe", "codes/windows/qsopt_setup.exe") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td>see <a href=../software/mscomponents.htm> Setup Components </a></td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// Windows/Cygwin
+wd('<tr><td colspan=2> Windows/Cygwin </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/windows_cygwin/qsopt.a.zip") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/windows_cygwin/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+
+//Red Hat Linux
+wd('<tr><td colspan=2> Red Hat Linux 8.0 </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/linux24/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/linux24/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/linux24/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/linux24/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/linux24/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// MacOS 10.15 (gcc)
+wd('<tr><td colspan=2> Intel MacOS 10.15 (64-bit) </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/mac64/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/mac64/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library (170311) </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/mac64/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// macOS (M1 Processor, compiled by Eleonora Vercesi)
+wd('<tr><td colspan=2> M1 MacOS 11</td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/m1/qsopt.a") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library (170311), compiled by Eleonora Vercesi </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/m1/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+wd(qs_spacer_row(1, 16)); 
+
+// Solaris 32 bit 
+wd('<tr><td colspan=2> Solaris 32 bit SPARC platform </td></tr>'); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/solaris32/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/solaris32/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/solaris32/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/solaris32/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/solaris32/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// Solaris 64 bit 
+wd('<tr><td colspan=2> Solaris 64 bit SPARC platform </td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/solaris64/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/solaris64/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/solaris64/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/solaris64/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/solaris64/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// HP/Compact ...
+wd('<tr><td colspan=2> HP/Compaq OSF1 Alpha</td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/osf1/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/osf1/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/osf1/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/osf1/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/osf1/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// SGI IRIX 32 bit
+wd('<tr><td colspan=2> SGI IRIX mips 32 bits <td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/mips32/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/mips32/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/mips32/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/mips32/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/mips32/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// SGI IRIX 64
+wd('<tr><td colspan=2> SGI IRIX mips 64 bits </td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/mips64/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/mips64/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/mips64/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/mips64/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/mips64/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// IBM AIX 32
+wd('<tr><td colspan=2> IBM AIX 32 bits </td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/aix32/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/aix32/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/aix32/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/aix32/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/aix32/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// IBM AIX 64
+wd('<tr><td colspan=2> IBM AIX 64 bits </td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/aix64/qsopt.gz") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsreader", "codes/aix64/qsreader.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Reader Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/aix64/qsopt.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/aix64/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("Everything", "codes/aix64/QS.tar.gz") + '</td>' +
+   '</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// Intel IA-64
+wd('<tr><td colspan=2> Intel IA-64 </td></tr>');
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt_IA64_gcc.a", "codes/ia64/qsopt_IA64_gcc.a.gz") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library, compiled by Karol Miaskiewic </td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+// Ubuntu 18.04
+wd('<tr><td colspan=2> Ubuntu 18 (with -fPIC) </td></tr>'); 
+   qs_spacer_row(1, 8); 
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt", "codes/ubuntu/qsopt") + '</td>'+ 
+   qs_spacer_col(8, 1) + 
+   '<td> Solver Executable</td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.a", "codes/ubuntu/qsopt.a") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> Function Library (170311) </td></tr>');
+wd('<tr>' + qs_spacer_col(16, 1) + 
+   '<td>' + qs_ref("qsopt.h", "codes/ubuntu/qsopt.h") + '</td>' +
+   qs_spacer_col(8, 1) + 
+   '<td> C include file</td></tr>');
+
+wd(qs_spacer_row(1, 16)); 
+
+
+html(); 
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+wd(qs_table_finish());
+qs_doc_finish("June 2021"); 
+html(); 
+</SCRIPT>
+</html> 

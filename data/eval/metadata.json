@@ -1,0 +1,234 @@
+{
+  "instances": [
+    {
+      "id": "random_explicit_200_seed2025103200",
+      "file": "random_explicit_200_seed2025103200.tsp",
+      "n": 200,
+      "seed": 2025103200,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random symmetric TSP (200 nodes) with explicit weight matrix generated for tsplib-like evaluation."
+    },
+    {
+      "id": "random_explicit_300_seed2025103300",
+      "file": "random_explicit_300_seed2025103300.tsp",
+      "n": 300,
+      "seed": 2025103300,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random symmetric TSP (300 nodes) with explicit weight matrix generated for tsplib-like evaluation."
+    },
+    {
+      "id": "random_explicit_400_seed2025103400",
+      "file": "random_explicit_400_seed2025103400.tsp",
+      "n": 400,
+      "seed": 2025103400,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random symmetric TSP (400 nodes) with explicit weight matrix generated for tsplib-like evaluation."
+    },
+    {
+      "id": "toy200_uniform_seed2025103100",
+      "file": "toy200_uniform_seed2025103100.tsp",
+      "n": 200,
+      "seed": 2025103100,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103101",
+      "file": "toy200_uniform_seed2025103101.tsp",
+      "n": 200,
+      "seed": 2025103101,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103102",
+      "file": "toy200_uniform_seed2025103102.tsp",
+      "n": 200,
+      "seed": 2025103102,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103103",
+      "file": "toy200_uniform_seed2025103103.tsp",
+      "n": 200,
+      "seed": 2025103103,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103104",
+      "file": "toy200_uniform_seed2025103104.tsp",
+      "n": 200,
+      "seed": 2025103104,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103105",
+      "file": "toy200_uniform_seed2025103105.tsp",
+      "n": 200,
+      "seed": 2025103105,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103106",
+      "file": "toy200_uniform_seed2025103106.tsp",
+      "n": 200,
+      "seed": 2025103106,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103107",
+      "file": "toy200_uniform_seed2025103107.tsp",
+      "n": 200,
+      "seed": 2025103107,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103108",
+      "file": "toy200_uniform_seed2025103108.tsp",
+      "n": 200,
+      "seed": 2025103108,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy200_uniform_seed2025103109",
+      "file": "toy200_uniform_seed2025103109.tsp",
+      "n": 200,
+      "seed": 2025103109,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy200",
+      "description": "Toy benchmark: 200-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510280",
+      "file": "toy20_uniform_seed202510280.tsp",
+      "n": 20,
+      "seed": 202510280,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510281",
+      "file": "toy20_uniform_seed202510281.tsp",
+      "n": 20,
+      "seed": 202510281,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510282",
+      "file": "toy20_uniform_seed202510282.tsp",
+      "n": 20,
+      "seed": 202510282,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510283",
+      "file": "toy20_uniform_seed202510283.tsp",
+      "n": 20,
+      "seed": 202510283,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510284",
+      "file": "toy20_uniform_seed202510284.tsp",
+      "n": 20,
+      "seed": 202510284,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510285",
+      "file": "toy20_uniform_seed202510285.tsp",
+      "n": 20,
+      "seed": 202510285,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510286",
+      "file": "toy20_uniform_seed202510286.tsp",
+      "n": 20,
+      "seed": 202510286,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510287",
+      "file": "toy20_uniform_seed202510287.tsp",
+      "n": 20,
+      "seed": 202510287,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510288",
+      "file": "toy20_uniform_seed202510288.tsp",
+      "n": 20,
+      "seed": 202510288,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    },
+    {
+      "id": "toy20_uniform_seed202510289",
+      "file": "toy20_uniform_seed202510289.tsp",
+      "n": 20,
+      "seed": 202510289,
+      "generator": "uniform_int_square",
+      "distribution": "uniform_square_int_unique",
+      "split": "toy20",
+      "description": "Toy benchmark: 20-city uniform random Euclidean TSP with unique integer coordinates in [0,1000]."
+    }
+  ]
+}
