@@ -18,6 +18,9 @@ paper/
 random_explicit_200_/
 random_explicit_300_/
 random_explicit_400_/
+random_explicit_200_
+random_explicit_300_
+random_explicit_400_
 scripts/generators/
 scripts/plot_gepa_metrics_smoothed.py
 scripts/plot_tsp_with_background.py
