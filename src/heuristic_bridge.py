@@ -77,6 +77,7 @@ def evaluate_candidate(
     split: str = "toy20",
     repeats: int = 1,
     timeout: Optional[float] = None,
+    cpu_affinity: Optional[str] = None,
     sandbox_root: Optional[Path] = None,
     keep_sandbox: bool = False,
     environment: Optional[Dict[str, Any]] = None,
@@ -107,6 +108,8 @@ def evaluate_candidate(
     run_root:
         Optional directory under which evaluation artifacts should be stored.
         When provided, artifacts will land in ``run_root / "eval" / ...``.
+    cpu_affinity:
+        Optional CPU affinity string (e.g., "0-3") passed through to taskset.
 
     Returns
     -------
@@ -171,6 +174,8 @@ def evaluate_candidate(
             "--run-dir",
             str(eval_root),
         ]
+        if cpu_affinity:
+            eval_cmd.extend(["--cpu-affinity", cpu_affinity])
         if timeout is not None:
             eval_cmd.extend(["--timeout", str(timeout)])
         if environment is not None:
@@ -214,6 +219,7 @@ def evaluate_candidate(
             "split": split,
             "repeats": repeats,
             "timeout": timeout,
+            "cpu_affinity": cpu_affinity,
         }
 
     except HeuristicEvaluationError as exc:

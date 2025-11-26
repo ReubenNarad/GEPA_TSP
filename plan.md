@@ -164,6 +164,7 @@ python3 scripts/run_concorde_eval.py \
     --split toy20 \
     --repeats 3 \
     --label baseline
+    # optional: --cpu-affinity 0-3 to pin taskset cores
 ```
 
 Features:
@@ -174,6 +175,7 @@ Features:
   - `results.jsonl` – per-instance structured output (stdout/stderr included).
   - `instances/<id>_rN.stdout/.stderr` – raw logs.
   - `summary.json` – aggregate metrics.
+- `config.json` now records the Concorde binary SHA256 and the requested CPU affinity (if provided) so runs can be compared for build/affinity drift.
 - Gracefully handles timeouts (`--timeout`), parse failures, and missing files.
 
 Use this runner both manually and from the GEPA bridge to keep metrics consistent.

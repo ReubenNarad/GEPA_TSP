@@ -62,6 +62,12 @@ def parse_args(argv=None):
         help="Optional per-instance timeout in seconds.",
     )
     parser.add_argument(
+        "--cpu-affinity",
+        type=str,
+        default=None,
+        help="Optional CPU affinity passed to taskset (e.g., '0' or '0-3').",
+    )
+    parser.add_argument(
         "--sandbox-root",
         type=Path,
         default=None,
@@ -116,6 +122,7 @@ def main(argv=None) -> int:
         split=args.split,
         repeats=args.repeats,
         timeout=args.timeout,
+        cpu_affinity=args.cpu_affinity,
         sandbox_root=args.sandbox_root,
         keep_sandbox=args.keep_sandbox,
         environment=extra_env,

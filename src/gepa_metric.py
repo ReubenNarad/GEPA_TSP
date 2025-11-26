@@ -46,11 +46,31 @@ def evaluate_and_score(
     split: str = "toy20",
     repeats: int = 1,
     timeout: Optional[float] = None,
+    cpu_affinity: Optional[str] = None,
     environment: Optional[Dict[str, Any]] = None,
     run_root: Optional[Path] = None,
 ) -> Tuple[float, str, Dict[str, Any]]:
     """
     Evaluate a candidate and produce a scalar score plus feedback text.
+
+    Parameters
+    ----------
+    code : Optional[str]
+        LK block to inject (None uses the default block).
+    label : str
+        Run label for artifact naming.
+    split : str
+        Dataset split to benchmark.
+    repeats : int
+        Repetitions per instance.
+    timeout : Optional[float]
+        Optional per-instance timeout in seconds.
+    cpu_affinity : Optional[str]
+        Optional CPU affinity string forwarded to taskset in run_concorde_eval.
+    environment : Optional[Dict[str, Any]]
+        Extra metadata stored alongside run artifacts.
+    run_root : Optional[Path]
+        Root directory for evaluation artifacts.
 
     Returns
     -------
@@ -68,6 +88,7 @@ def evaluate_and_score(
         split=split,
         repeats=repeats,
         timeout=timeout,
+        cpu_affinity=cpu_affinity,
         environment=environment,
         run_root=run_root,
     )

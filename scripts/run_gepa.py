@@ -149,6 +149,7 @@ def build_metric(
     default_split: str,
     default_repeats: int,
     default_timeout: Optional[float],
+    default_cpu_affinity: Optional[str],
     environment: Optional[Dict[str, Any]],
     run_root: Optional[Path],
 ) -> callable:
@@ -181,6 +182,7 @@ def build_metric(
         repeats = getattr(example, "repeats", default_repeats)
         timeout = getattr(example, "timeout", default_timeout)
         env_payload = getattr(example, "environment", environment)
+        cpu_affinity = getattr(example, "cpu_affinity", default_cpu_affinity)
 
         score, feedback, result = evaluate_and_score(
             code=block,
@@ -188,6 +190,7 @@ def build_metric(
             split=split,
             repeats=repeats,
             timeout=timeout,
+            cpu_affinity=cpu_affinity,
             environment=env_payload,
             run_root=run_root,
         )
@@ -235,6 +238,12 @@ def parse_args() -> argparse.Namespace:
         help="Repeats for the baseline evaluation (averaged).",
     )
     parser.add_argument("--timeout", type=float, default=None, help="Optional per-instance timeout (seconds).")
+    parser.add_argument(
+        "--cpu-affinity",
+        type=str,
+        default=None,
+        help="Optional CPU affinity passed to taskset (e.g., '0' or '0-3').",
+    )
     parser.add_argument(
         "--steps",
         type=int,
@@ -373,16 +382,20 @@ def main() -> None:
             split=args.split,
             repeats=args.repeats,
             timeout=args.timeout,
+            cpu_affinity=args.cpu_affinity,
             environment=environment,
         ).with_inputs("current_block")
 
-    trainset = [make_example() for _ in range(max(1, args.train_examples))]
+    # Use one representative example for final evaluation and to seed the trainset.
+    train_example = make_example()
+    trainset = [train_example for _ in range(max(1, args.train_examples))]
 
     metric_fn = build_metric(
         label_prefix=args.label_prefix,
         default_split=args.split,
         default_repeats=args.repeats,
         default_timeout=args.timeout,
+        default_cpu_affinity=args.cpu_affinity,
         environment=environment,
         run_root=run_root,
     )
@@ -403,11 +416,10 @@ def main() -> None:
         log_dir=str(log_dir),
         failure_score=-1e9,
         perfect_score=0.0,
-        deduplicate=True,
     )
 
     try:
-        def dedup_wrapper(module, *args, **kwargs):
+        def dedup_wrapper(module, orig_forward, *args, **kwargs):
             # Hash heuristic_block string to skip duplicates
             candidate_block = getattr(module, "heuristic_block", None)
             if isinstance(candidate_block, str):
@@ -421,13 +433,13 @@ def main() -> None:
                     setattr(pred, "heuristic_block", candidate_block)
                     return pred
                 evaluated_hashes.add(h)
-            return module(*args, **kwargs)
+            return orig_forward(*args, **kwargs)
 
         optimized_program = gepa.compile(program, trainset=trainset)
         # Wrap predictors to enforce dedup (best-effort)
         for name, pred in optimized_program.named_predictors():
             orig_forward = pred.forward
-            pred.forward = lambda *a, **kw: dedup_wrapper(pred, *a, **kw)
+            pred.forward = lambda *a, **kw: dedup_wrapper(pred, orig_forward, *a, **kw)
     except Exception as exc:  # noqa: BLE001
         raise SystemExit(f"GEPA failed: {exc}") from exc
 
@@ -441,6 +453,7 @@ def main() -> None:
         split=args.split,
         repeats=args.repeats,
         timeout=args.timeout,
+        cpu_affinity=args.cpu_affinity,
         environment=environment,
         run_root=run_root,
     )

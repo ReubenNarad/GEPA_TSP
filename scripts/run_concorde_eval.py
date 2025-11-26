@@ -16,6 +16,7 @@ import argparse
 import datetime as _dt
 import json
 import os
+import hashlib
 from pathlib import Path
 import re
 import subprocess
@@ -34,6 +35,14 @@ _LP_VALUE_RE = re.compile(
     r"LP Value\s+([0-9]+):\s+([-+]?[0-9.]+)\s+\(([0-9.]+)\s+seconds\)"
 )
 _PROBLEM_NAME_RE = re.compile(r"Problem Name:\s*([A-Za-z0-9_\-\.]+)")
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 
 def _load_instances(metadata_path: Path) -> List[Dict[str, Any]]:
@@ -85,6 +94,7 @@ def _run_instance(
     binary: Path,
     instance_path: Path,
     timeout: Optional[float],
+    cpu_affinity: Optional[str],
 ) -> Dict[str, Any]:
     import tempfile
     import shutil
@@ -93,7 +103,13 @@ def _run_instance(
     try:
         local_instance = workdir / instance_path.name
         shutil.copy2(instance_path, local_instance)
-        cmd = [str(binary), str(local_instance)]
+        cmd: List[str] = []
+        if cpu_affinity:
+            if shutil.which("taskset") is None:
+                print("warning: taskset not found; ignoring --cpu-affinity", file=sys.stderr)
+            else:
+                cmd.extend(["taskset", "-c", cpu_affinity])
+        cmd.extend([str(binary), str(local_instance)])
         start = time.perf_counter()
         try:
             proc = subprocess.run(
@@ -267,6 +283,12 @@ def _parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         help="Optional timeout in seconds for each Concorde run.",
     )
     parser.add_argument(
+        "--cpu-affinity",
+        type=str,
+        default=None,
+        help="Optional CPU affinity passed to taskset (e.g., '0' or '0-3').",
+    )
+    parser.add_argument(
         "--label",
         type=str,
         default=None,
@@ -330,6 +352,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     config: Dict[str, Any] = {
         "timestamp": timestamp,
         "binary": str(binary),
+        "binary_sha256": _sha256(binary),
         "metadata": str(metadata_path),
         "selected_ids": [inst["id"] for inst in selected],
         "repeats": args.repeats,
@@ -337,6 +360,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     }
     if environment is not None:
         config["environment"] = environment
+    if args.cpu_affinity:
+        config["cpu_affinity"] = args.cpu_affinity
 
     results: List[Dict[str, Any]] = []
 
@@ -360,7 +385,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
         for repeat in range(1, args.repeats + 1):
             print(f"[{inst_id}] repeat {repeat}/{args.repeats} ... ", end="", flush=True)
-            run_info = _run_instance(binary, instance_path, args.timeout)
+            run_info = _run_instance(binary, instance_path, args.timeout, args.cpu_affinity)
             run_info["instance_id"] = inst_id
             run_info["repeat"] = repeat
             run_info["instance_file"] = str(instance_path)
