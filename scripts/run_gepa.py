@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import re
 import shutil
@@ -20,6 +21,20 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC_PATH = ROOT / "src"
 if str(SRC_PATH) not in sys.path:
     sys.path.insert(0, str(SRC_PATH))
+
+# Load secrets from .env if python-dotenv is available (so OPENROUTER_API_KEY is picked up).
+env_path = ROOT / ".env"
+if env_path.exists():
+    try:
+        from dotenv import load_dotenv  # type: ignore
+
+        load_dotenv(dotenv_path=env_path)
+    except ImportError:
+        print("warning: python-dotenv not installed; ignoring .env file", file=sys.stderr)
+
+# Quiet down DSPy/GEPA info logs (prompts, metrics spam) while keeping progress bars.
+for _logger_name in ("dspy", "gepa", "dspy.teleprompt.gepa", "dspy.evaluate"):
+    logging.getLogger(_logger_name).setLevel(logging.ERROR)
 
 # Keep DSPy caches inside the repo so we can run without HOME write access.
 CACHE_DIR = ROOT / ".dspy_cache"
@@ -199,14 +214,38 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run GEPA on the Lin-Kernighan heuristic.")
     parser.add_argument("--student-model", default="openai/gpt-5-nano", help="Student model (OpenRouter ID).")
     parser.add_argument("--reflector-model", default="openai/gpt-5-mini", help="Reflector model (OpenRouter ID).")
+    parser.add_argument(
+        "--student-max-tokens",
+        type=int,
+        default=6000,
+        help="Maximum decoding tokens for the student LM (<=0 lets GEPA choose).",
+    )
+    parser.add_argument(
+        "--reflector-max-tokens",
+        type=int,
+        default=4000,
+        help="Maximum decoding tokens for the reflector LM (<=0 lets GEPA choose).",
+    )
     parser.add_argument("--split", default="toy20", help="Dataset split for evaluation.")
     parser.add_argument("--repeats", type=int, default=1, help="Repeats per instance during evaluation.")
+    parser.add_argument(
+        "--baseline-repeats",
+        type=int,
+        default=5,
+        help="Repeats for the baseline evaluation (averaged).",
+    )
     parser.add_argument("--timeout", type=float, default=None, help="Optional per-instance timeout (seconds).")
     parser.add_argument(
         "--steps",
         type=int,
         default=4,
         help="Budget for GEPA metric calls. Use 0 to only evaluate the baseline block.",
+    )
+    parser.add_argument(
+        "--train-examples",
+        type=int,
+        default=3,
+        help="Number of train examples to feed GEPA (all using the provided split/repeats/timeout).",
     )
     parser.add_argument(
         "--reflection-batch",
@@ -233,18 +272,30 @@ def configure_lms(
     api_base = os.environ.get("OPENROUTER_API_BASE", "https://openrouter.ai/api/v1")
 
     # gpt-5 reasoning models require temperature=1.0 and >=16000 tokens.
-    def lm_kwargs(model: str) -> Dict[str, Any]:
+    def lm_kwargs(model: str, requested: int) -> Dict[str, Any]:
         is_reasoning = model.startswith("openai/gpt-5") or "/gpt-5" in model
+        if requested and requested > 0:
+            max_tokens = requested
+        else:
+            max_tokens = 20000 if is_reasoning else 6000
+        if is_reasoning:
+            max_tokens = max(max_tokens, 16000)
         return {
             "temperature": 1.0 if is_reasoning else 0.3,
-            "max_tokens": 20000 if is_reasoning else 6000,
+            "max_tokens": max_tokens,
             "api_key": api_key,
             "api_base": api_base,
             "extra_headers": headers or None,
         }
 
-    student_lm = dspy.LM(args.student_model, **lm_kwargs(args.student_model))
-    reflector_lm = dspy.LM(args.reflector_model, **lm_kwargs(args.reflector_model))
+    student_lm = dspy.LM(
+        args.student_model,
+        **lm_kwargs(args.student_model, args.student_max_tokens),
+    )
+    reflector_lm = dspy.LM(
+        args.reflector_model,
+        **lm_kwargs(args.reflector_model, args.reflector_max_tokens),
+    )
     return student_lm, reflector_lm
 
 
@@ -254,11 +305,12 @@ def baseline_evaluation(
     run_root: Path,
 ) -> Dict[str, Any]:
     label = f"{args.label_prefix}_baseline"
+    baseline_repeats = max(1, args.baseline_repeats)
     score, feedback, result = evaluate_and_score(
         code=default_block(),
         label=label,
         split=args.split,
-        repeats=args.repeats,
+        repeats=baseline_repeats,
         timeout=args.timeout,
         environment=environment,
         run_root=run_root,
@@ -271,6 +323,7 @@ def baseline_evaluation(
         "score": score,
         "feedback": feedback,
         "result": result,
+        "baseline_repeats": baseline_repeats,
     }
     baseline_path.write_text(json.dumps(payload, indent=2))
     print(f"Baseline evaluation saved to {baseline_path}")
@@ -311,16 +364,19 @@ def main() -> None:
     student_lm, reflector_lm = configure_lms(args, headers)
     dspy.configure(lm=student_lm)
 
-    program = LinKernighanProgram(student_prompt, max_tokens=6000)
+    student_block_tokens = args.student_max_tokens if args.student_max_tokens > 0 else 6000
+    program = LinKernighanProgram(student_prompt, max_tokens=student_block_tokens)
 
-    train_example = Example(
-        current_block=default_block(),
-        split=args.split,
-        repeats=args.repeats,
-        timeout=args.timeout,
-        environment=environment,
-    ).with_inputs("current_block")
-    trainset = [train_example]
+    def make_example() -> Example:
+        return Example(
+            current_block=default_block(),
+            split=args.split,
+            repeats=args.repeats,
+            timeout=args.timeout,
+            environment=environment,
+        ).with_inputs("current_block")
+
+    trainset = [make_example() for _ in range(max(1, args.train_examples))]
 
     metric_fn = build_metric(
         label_prefix=args.label_prefix,
@@ -330,6 +386,8 @@ def main() -> None:
         environment=environment,
         run_root=run_root,
     )
+    # Track hashes of evaluated heuristic blocks to avoid duplicate evaluations.
+    evaluated_hashes = set()
 
     run_root.mkdir(parents=True, exist_ok=True)
     log_dir = run_root / "logs"
@@ -345,10 +403,31 @@ def main() -> None:
         log_dir=str(log_dir),
         failure_score=-1e9,
         perfect_score=0.0,
+        deduplicate=True,
     )
 
     try:
+        def dedup_wrapper(module, *args, **kwargs):
+            # Hash heuristic_block string to skip duplicates
+            candidate_block = getattr(module, "heuristic_block", None)
+            if isinstance(candidate_block, str):
+                h = hash(candidate_block)
+                if h in evaluated_hashes:
+                    # Return dummy prediction with cached score/feedback to avoid re-eval
+                    pred = dspy.Prediction()
+                    setattr(pred, "_gepa_score", -1e9)
+                    setattr(pred, "_gepa_feedback_text", "Duplicate candidate skipped by dedup.")
+                    setattr(pred, "_gepa_result", {"status": "skipped_duplicate"})
+                    setattr(pred, "heuristic_block", candidate_block)
+                    return pred
+                evaluated_hashes.add(h)
+            return module(*args, **kwargs)
+
         optimized_program = gepa.compile(program, trainset=trainset)
+        # Wrap predictors to enforce dedup (best-effort)
+        for name, pred in optimized_program.named_predictors():
+            orig_forward = pred.forward
+            pred.forward = lambda *a, **kw: dedup_wrapper(pred, *a, **kw)
     except Exception as exc:  # noqa: BLE001
         raise SystemExit(f"GEPA failed: {exc}") from exc
 

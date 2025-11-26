@@ -86,80 +86,79 @@ def _run_instance(
     instance_path: Path,
     timeout: Optional[float],
 ) -> Dict[str, Any]:
-    cmd = [str(binary), str(instance_path)]
-    start = time.perf_counter()
+    import tempfile
+    import shutil
+
+    workdir = Path(tempfile.mkdtemp(prefix="concorde_run_"))
     try:
-        proc = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            check=False,
-        )
-        timed_out = False
-    except subprocess.TimeoutExpired as exc:
+        local_instance = workdir / instance_path.name
+        shutil.copy2(instance_path, local_instance)
+        cmd = [str(binary), str(local_instance)]
+        start = time.perf_counter()
+        try:
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                check=False,
+                cwd=workdir,
+            )
+            timed_out = False
+        except subprocess.TimeoutExpired as exc:
+            duration = time.perf_counter() - start
+            return {
+                "cmd": cmd,
+                "wall_time": duration,
+                "timeout": timeout,
+                "timed_out": True,
+                "stdout": exc.stdout or "",
+                "stderr": exc.stderr or "",
+                "returncode": None,
+                "metrics": {},
+            }
         duration = time.perf_counter() - start
-        return {
+
+        stdout = proc.stdout or ""
+        metrics: Dict[str, Any] = {}
+
+        if m := _TOTAL_TIME_RE.search(stdout):
+            metrics["total_running_time_sec"] = float(m.group(1))
+        if m := _BBNODE_RE.search(stdout):
+            metrics["bb_nodes"] = int(m.group(1))
+        if m := _OPT_RE.search(stdout):
+            metrics["optimal_solution"] = float(m.group(1))
+        if m := _FINAL_BOUNDS_RE.search(stdout):
+            metrics["final_lower_bound"] = float(m.group(1))
+            metrics["final_upper_bound"] = float(m.group(2))
+        lp_values = []
+        for m in _LP_VALUE_RE.finditer(stdout):
+            lp_values.append(
+                {
+                    "index": int(m.group(1)),
+                    "value": float(m.group(2)),
+                    "time_sec": float(m.group(3)),
+                }
+            )
+        if lp_values:
+            metrics["lp_values"] = lp_values
+
+        result = {
             "cmd": cmd,
             "wall_time": duration,
             "timeout": timeout,
-            "timed_out": True,
-            "stdout": exc.stdout or "",
-            "stderr": exc.stderr or "",
-            "returncode": None,
-            "metrics": {},
+            "timed_out": timed_out,
+            "stdout": stdout,
+            "stderr": proc.stderr or "",
+            "returncode": proc.returncode,
+            "metrics": metrics,
         }
-    duration = time.perf_counter() - start
-
-    stdout = proc.stdout or ""
-    metrics: Dict[str, Any] = {}
-
-    if m := _TOTAL_TIME_RE.search(stdout):
-        metrics["total_running_time_sec"] = float(m.group(1))
-    if m := _BBNODE_RE.search(stdout):
-        metrics["bb_nodes"] = int(m.group(1))
-    if m := _OPT_RE.search(stdout):
-        metrics["optimal_solution"] = float(m.group(1))
-    if m := _FINAL_BOUNDS_RE.search(stdout):
-        metrics["final_lower_bound"] = float(m.group(1))
-        metrics["final_upper_bound"] = float(m.group(2))
-    lp_values = []
-    for m in _LP_VALUE_RE.finditer(stdout):
-        lp_values.append(
-            {
-                "index": int(m.group(1)),
-                "value": float(m.group(2)),
-                "time_sec": float(m.group(3)),
-            }
-        )
-    if lp_values:
-        metrics["lp_values"] = lp_values
-
-    result = {
-        "cmd": cmd,
-        "wall_time": duration,
-        "timeout": timeout,
-        "timed_out": timed_out,
-        "stdout": stdout,
-        "stderr": proc.stderr or "",
-        "returncode": proc.returncode,
-        "metrics": metrics,
-    }
-
-    cleanup_names = {instance_path.stem}
-    if m := _PROBLEM_NAME_RE.search(stdout):
-        cleanup_names.add(m.group(1).strip())
-    unique_dirs = {Path.cwd(), instance_path.parent}
-    for name in cleanup_names:
-        for directory in unique_dirs:
-            for suffix in (".sol", ".res"):
-                candidate = directory / f"{name}{suffix}"
-                try:
-                    candidate.unlink()
-                except FileNotFoundError:
-                    pass
-
-    return result
+        return result
+    finally:
+        try:
+            shutil.rmtree(workdir, ignore_errors=True)
+        except Exception:
+            pass
 
 
 def _summarize(results: List[Dict[str, Any]]) -> Dict[str, Any]:

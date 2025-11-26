@@ -13,6 +13,15 @@ PLOT_PATH="$RUN_DIR/gepa_plot.png"
 
 mkdir -p "$SAVE_DIR"
 
+if [[ -f "$ROOT/.env" ]]; then
+  set -a
+  # shellcheck disable=SC1090
+  source "$ROOT/.env"
+  set +a
+fi
+
+export LITELLM_USE_THREADPOOL=false
+
 # Run GEPA
 python "$ROOT/scripts/run_gepa.py" \
   --student-model openai/gpt-5-nano \

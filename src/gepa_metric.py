@@ -78,6 +78,11 @@ def evaluate_and_score(
 
     summary = result.get("summary") or {}
     avg_wall = summary.get("average_wall_time_sec")
+    failures = summary.get("failures", 0) or 0
+    timeouts = summary.get("timeouts", 0) or 0
+    if failures or timeouts:
+        feedback = _build_feedback(result) + f"\npenalized: failures={failures}, timeouts={timeouts}"
+        return -1e9, feedback, result
     if avg_wall is None:
         feedback = _build_feedback(result)
         return -1e9, feedback, result

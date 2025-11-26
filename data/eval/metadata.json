@@ -2,7 +2,7 @@
   "instances": [
     {
       "id": "random_explicit_200_seed2025103200",
-      "file": "random_explicit_200_seed2025103200.tsp",
+      "file": "dev/random_explicit_200_seed2025103200.tsp",
       "n": 200,
       "seed": 2025103200,
       "generator": "random_explicit_matrix",
@@ -12,7 +12,7 @@
     },
     {
       "id": "random_explicit_300_seed2025103300",
-      "file": "random_explicit_300_seed2025103300.tsp",
+      "file": "dev/random_explicit_300_seed2025103300.tsp",
       "n": 300,
       "seed": 2025103300,
       "generator": "random_explicit_matrix",
@@ -21,8 +21,108 @@
       "description": "Random symmetric TSP (300 nodes) with explicit weight matrix generated for tsplib-like evaluation."
     },
     {
+      "id": "random_explicit_300_seed2025110400",
+      "file": "dev/random_explicit_300_seed2025110400.tsp",
+      "n": 300,
+      "seed": 2025110400,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110400)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110401",
+      "file": "dev/random_explicit_300_seed2025110401.tsp",
+      "n": 300,
+      "seed": 2025110401,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110401)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110402",
+      "file": "dev/random_explicit_300_seed2025110402.tsp",
+      "n": 300,
+      "seed": 2025110402,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110402)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110403",
+      "file": "dev/random_explicit_300_seed2025110403.tsp",
+      "n": 300,
+      "seed": 2025110403,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110403)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110404",
+      "file": "dev/random_explicit_300_seed2025110404.tsp",
+      "n": 300,
+      "seed": 2025110404,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110404)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110405",
+      "file": "dev/random_explicit_300_seed2025110405.tsp",
+      "n": 300,
+      "seed": 2025110405,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110405)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110406",
+      "file": "dev/random_explicit_300_seed2025110406.tsp",
+      "n": 300,
+      "seed": 2025110406,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110406)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110407",
+      "file": "dev/random_explicit_300_seed2025110407.tsp",
+      "n": 300,
+      "seed": 2025110407,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110407)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110408",
+      "file": "dev/random_explicit_300_seed2025110408.tsp",
+      "n": 300,
+      "seed": 2025110408,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110408)."
+    },
+    {
+      "id": "random_explicit_300_seed2025110409",
+      "file": "dev/random_explicit_300_seed2025110409.tsp",
+      "n": 300,
+      "seed": 2025110409,
+      "generator": "random_explicit_matrix",
+      "distribution": "random_full_matrix",
+      "split": "tsplib_random",
+      "description": "Random explicit-weight TSP with 300 nodes (seed 2025110409)."
+    },
+    {
       "id": "random_explicit_400_seed2025103400",
-      "file": "random_explicit_400_seed2025103400.tsp",
+      "file": "dev/random_explicit_400_seed2025103400.tsp",
       "n": 400,
       "seed": 2025103400,
       "generator": "random_explicit_matrix",
@@ -31,8 +131,557 @@
       "description": "Random symmetric TSP (400 nodes) with explicit weight matrix generated for tsplib-like evaluation."
     },
     {
+      "id": "structured_clustered_2025112400_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112400_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112400,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112401_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112401_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112401,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112402_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112402_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112402,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112403_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112403_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112403,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112404_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112404_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112404,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112405_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112405_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112405,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112406_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112406_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112406,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112407_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112407_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112407,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112408_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112408_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112408,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112409_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112409_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112409,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112410_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112410_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112410,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112411_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112411_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112411,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112412_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112412_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112412,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112413_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112413_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112413,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112414_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112414_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112414,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112415_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112415_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112415,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112416_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112416_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112416,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112417_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112417_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112417,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112418_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112418_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112418,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_clustered_2025112419_n200",
+      "file": "experiments/3_dist_n_20/structured_clustered_2025112419_n200.tsp",
+      "n": 200,
+      "split": "structured_clustered",
+      "generator": "clustered_structured",
+      "seed": 2025112419,
+      "description": "Clustered anisotropic Gaussians (k=4, n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112400_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112400_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112400,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112401_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112401_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112401,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112402_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112402_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112402,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112403_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112403_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112403,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112404_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112404_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112404,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112405_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112405_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112405,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112406_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112406_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112406,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112407_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112407_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112407,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112408_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112408_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112408,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112409_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112409_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112409,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112410_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112410_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112410,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112411_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112411_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112411,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112412_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112412_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112412,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112413_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112413_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112413,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112414_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112414_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112414,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112415_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112415_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112415,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112416_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112416_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112416,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112417_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112417_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112417,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112418_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112418_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112418,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_2025112419_n200",
+      "file": "experiments/3_dist_n_20/structured_seattle_2025112419_n200.tsp",
+      "n": 200,
+      "split": "structured_seattle",
+      "generator": "seattle_osm_distance",
+      "seed": 2025112419,
+      "description": "Seattle road-network shortest-path distances (n=200)"
+    },
+    {
+      "id": "structured_seattle_time_400_seed20251125",
+      "file": "structured_seattle_time_400_seed20251125.tsp",
+      "n": 400,
+      "split": "structured_seattle_time",
+      "generator": "seattle_osm_traveltime",
+      "seed": 20251125,
+      "description": "Seattle road-network travel-time shortest paths (n=400, seconds)"
+    },
+    {
+      "id": "structured_uniform_2025112400_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112400_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112400,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112401_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112401_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112401,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112402_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112402_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112402,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112403_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112403_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112403,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112404_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112404_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112404,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112405_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112405_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112405,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112406_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112406_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112406,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112407_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112407_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112407,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112408_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112408_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112408,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112409_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112409_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112409,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112410_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112410_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112410,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112411_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112411_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112411,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112412_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112412_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112412,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112413_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112413_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112413,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112414_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112414_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112414,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112415_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112415_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112415,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112416_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112416_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112416,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112417_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112417_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112417,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112418_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112418_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112418,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
+      "id": "structured_uniform_2025112419_n200",
+      "file": "experiments/3_dist_n_20/structured_uniform_2025112419_n200.tsp",
+      "n": 200,
+      "split": "structured_uniform",
+      "generator": "uniform_structured",
+      "seed": 2025112419,
+      "description": "Uniform Euclidean points (n=200)"
+    },
+    {
       "id": "toy200_uniform_seed2025103100",
-      "file": "toy200_uniform_seed2025103100.tsp",
+      "file": "dev/toy200_uniform_seed2025103100.tsp",
       "n": 200,
       "seed": 2025103100,
       "generator": "uniform_int_square",
@@ -42,7 +691,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103101",
-      "file": "toy200_uniform_seed2025103101.tsp",
+      "file": "dev/toy200_uniform_seed2025103101.tsp",
       "n": 200,
       "seed": 2025103101,
       "generator": "uniform_int_square",
@@ -52,7 +701,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103102",
-      "file": "toy200_uniform_seed2025103102.tsp",
+      "file": "dev/toy200_uniform_seed2025103102.tsp",
       "n": 200,
       "seed": 2025103102,
       "generator": "uniform_int_square",
@@ -62,7 +711,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103103",
-      "file": "toy200_uniform_seed2025103103.tsp",
+      "file": "dev/toy200_uniform_seed2025103103.tsp",
       "n": 200,
       "seed": 2025103103,
       "generator": "uniform_int_square",
@@ -72,7 +721,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103104",
-      "file": "toy200_uniform_seed2025103104.tsp",
+      "file": "dev/toy200_uniform_seed2025103104.tsp",
       "n": 200,
       "seed": 2025103104,
       "generator": "uniform_int_square",
@@ -82,7 +731,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103105",
-      "file": "toy200_uniform_seed2025103105.tsp",
+      "file": "dev/toy200_uniform_seed2025103105.tsp",
       "n": 200,
       "seed": 2025103105,
       "generator": "uniform_int_square",
@@ -92,7 +741,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103106",
-      "file": "toy200_uniform_seed2025103106.tsp",
+      "file": "dev/toy200_uniform_seed2025103106.tsp",
       "n": 200,
       "seed": 2025103106,
       "generator": "uniform_int_square",
@@ -102,7 +751,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103107",
-      "file": "toy200_uniform_seed2025103107.tsp",
+      "file": "dev/toy200_uniform_seed2025103107.tsp",
       "n": 200,
       "seed": 2025103107,
       "generator": "uniform_int_square",
@@ -112,7 +761,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103108",
-      "file": "toy200_uniform_seed2025103108.tsp",
+      "file": "dev/toy200_uniform_seed2025103108.tsp",
       "n": 200,
       "seed": 2025103108,
       "generator": "uniform_int_square",
@@ -122,7 +771,7 @@
     },
     {
       "id": "toy200_uniform_seed2025103109",
-      "file": "toy200_uniform_seed2025103109.tsp",
+      "file": "dev/toy200_uniform_seed2025103109.tsp",
       "n": 200,
       "seed": 2025103109,
       "generator": "uniform_int_square",
@@ -132,7 +781,7 @@
     },
     {
       "id": "toy20_uniform_seed202510280",
-      "file": "toy20_uniform_seed202510280.tsp",
+      "file": "dev/toy20_uniform_seed202510280.tsp",
       "n": 20,
       "seed": 202510280,
       "generator": "uniform_int_square",
@@ -142,7 +791,7 @@
     },
     {
       "id": "toy20_uniform_seed202510281",
-      "file": "toy20_uniform_seed202510281.tsp",
+      "file": "dev/toy20_uniform_seed202510281.tsp",
       "n": 20,
       "seed": 202510281,
       "generator": "uniform_int_square",
@@ -152,7 +801,7 @@
     },
     {
       "id": "toy20_uniform_seed202510282",
-      "file": "toy20_uniform_seed202510282.tsp",
+      "file": "dev/toy20_uniform_seed202510282.tsp",
       "n": 20,
       "seed": 202510282,
       "generator": "uniform_int_square",
@@ -162,7 +811,7 @@
     },
     {
       "id": "toy20_uniform_seed202510283",
-      "file": "toy20_uniform_seed202510283.tsp",
+      "file": "dev/toy20_uniform_seed202510283.tsp",
       "n": 20,
       "seed": 202510283,
       "generator": "uniform_int_square",
@@ -172,7 +821,7 @@
     },
     {
       "id": "toy20_uniform_seed202510284",
-      "file": "toy20_uniform_seed202510284.tsp",
+      "file": "dev/toy20_uniform_seed202510284.tsp",
       "n": 20,
       "seed": 202510284,
       "generator": "uniform_int_square",
@@ -182,7 +831,7 @@
     },
     {
       "id": "toy20_uniform_seed202510285",
-      "file": "toy20_uniform_seed202510285.tsp",
+      "file": "dev/toy20_uniform_seed202510285.tsp",
       "n": 20,
       "seed": 202510285,
       "generator": "uniform_int_square",
@@ -192,7 +841,7 @@
     },
     {
       "id": "toy20_uniform_seed202510286",
-      "file": "toy20_uniform_seed202510286.tsp",
+      "file": "dev/toy20_uniform_seed202510286.tsp",
       "n": 20,
       "seed": 202510286,
       "generator": "uniform_int_square",
@@ -202,7 +851,7 @@
     },
     {
       "id": "toy20_uniform_seed202510287",
-      "file": "toy20_uniform_seed202510287.tsp",
+      "file": "dev/toy20_uniform_seed202510287.tsp",
       "n": 20,
       "seed": 202510287,
       "generator": "uniform_int_square",
@@ -212,7 +861,7 @@
     },
     {
       "id": "toy20_uniform_seed202510288",
-      "file": "toy20_uniform_seed202510288.tsp",
+      "file": "dev/toy20_uniform_seed202510288.tsp",
       "n": 20,
       "seed": 202510288,
       "generator": "uniform_int_square",
@@ -222,7 +871,7 @@
     },
     {
       "id": "toy20_uniform_seed202510289",
-      "file": "toy20_uniform_seed202510289.tsp",
+      "file": "dev/toy20_uniform_seed202510289.tsp",
       "n": 20,
       "seed": 202510289,
       "generator": "uniform_int_square",

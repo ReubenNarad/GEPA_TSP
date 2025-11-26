@@ -147,7 +147,7 @@ Current maintained splits:
 
 - **toy20** – ten 20-city Euclidean problems (unique integer coordinates). These are the original “smoke test” instances; Concorde solves them instantly at the root.
 - **toy200** – ten 200-city Euclidean problems. GEPA’s simple threshold tweak improved linkern’s runtime (~9 ms → ~9.1 ms) even though branch-and-bound still stops at the root.
-- **tsplib_random** – three explicit-weight “TSPLIB-style” instances (200/300/400 nodes) that force branch-and-bound to explore deeper trees (average bbnodes > 1). Generated via `random.randint` into FULL_MATRIX format because direct TSPLIB downloads are blocked in this environment. The helper `scripts/add_tsplib_eval.py` can register additional `.tsp` files if we obtain real TSPLIB instances later.
+- **tsplib_random** – a growing bank of explicit-weight “TSPLIB-style” instances (currently 200/300/400 nodes plus ten additional 300-node cases). These FULL_MATRIX problems routinely force Concorde to explore deeper trees (average bbnodes > 1). Generated locally via `random.randint` because direct TSPLIB downloads are blocked; once networking returns, drop real TSPLIB files into `data/eval/tsplib/` and use `scripts/add_tsplib_eval.py` to register them under this split (or a new, canonical split).
 
 To add more problems, append entries to `metadata.json` (or use the helper scripts) and give them a unique `split` label. Never overwrite existing IDs; the evaluation harness assumes entries are immutable.
 
@@ -266,9 +266,10 @@ Additional helpers:
 
 ## 9. Next Enhancements
 
-1. Source real TSPLIB instances (once networking hurdles are resolved) and register them via `scripts/add_tsplib_eval.py` so we can benchmark against canonical problems.
-2. Implement caching and result deduplication keyed by (candidate hash, dataset split) to avoid re-running identical candidates.
-3. Provide a parameterized instance generator script for future splits (currently done via ad-hoc snippets).
-4. Investigate richer metrics (e.g., LK iteration counts, cut counts) to augment wall-time and bbnodes in GEPA feedback.
+1. Adjust both the student and reflector prompts to encourage substantive LK rewrites (not just threshold tweaks) while preserving the contract—explicitly allow reorganizing the loop, alternative queue heuristics, etc.
+2. Incorporate branch-and-bound node counts directly into the GEPA metric (fewer nodes preferred), either as part of the scalar score or as a multi-objective to help balance speed vs. search effort.
+3. Source real TSPLIB instances (once networking hurdles are resolved) and register them via `scripts/add_tsplib_eval.py` so we benchmark against canonical problems.
+4. Implement caching/deduplication keyed by candidate hash + dataset split to avoid re-running identical heuristics.
+5. Provide a reusable instance generator script for future splits (currently ad-hoc).
 
 Keep this document updated whenever the workflow changes so the Linux setup remains reproducible.
