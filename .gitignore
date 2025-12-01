@@ -6,6 +6,7 @@ runs/
 runs/
 out/
 data/osm/
+data/eval/experiments/
 structured_*
 Nstructured_*
 Ostructured_*
