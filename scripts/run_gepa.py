@@ -47,6 +47,7 @@ from dspy.teleprompt import GEPA
 from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
 from dspy.utils.callback import BaseCallback
 
+from gepa.proposer.reflective_mutation.reflective_mutation import ReflectiveMutationProposer
 from gepa.strategies.instruction_proposal import InstructionProposalSignature
 from gepa_metric import evaluate_and_score  # type: ignore
 from heuristic_bridge import default_block  # type: ignore
@@ -428,6 +429,70 @@ def main() -> None:
     run_root.mkdir(parents=True, exist_ok=True)
     log_dir = run_root / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
+
+    # --- Logging hooks for reflection datasets and proposals ---
+    dataset_counter = {"n": 0}
+    propose_counter = {"n": 0}
+    from dspy.teleprompt.gepa.gepa_utils import DspyAdapter  # local import
+
+    _orig_make_reflective_dataset = DspyAdapter.make_reflective_dataset
+
+    def _logging_make_reflective_dataset(self, candidate, eval_batch, components_to_update):
+        out = _orig_make_reflective_dataset(self, candidate, eval_batch, components_to_update)
+        try:
+            dataset_counter["n"] += 1
+            path = log_dir / f"reflective_dataset_{dataset_counter['n']:03d}.json"
+            path.write_text(json.dumps(out, indent=2))
+        except Exception:
+            pass
+        return out
+
+    DspyAdapter.make_reflective_dataset = _logging_make_reflective_dataset  # type: ignore[assignment]
+
+    _orig_propose_new_texts = ReflectiveMutationProposer.propose_new_texts
+
+    def _logging_propose_new_texts(self, candidate, reflective_dataset, components_to_update):
+        new_texts = _orig_propose_new_texts(self, candidate, reflective_dataset, components_to_update)
+        try:
+            propose_counter["n"] += 1
+            path = log_dir / f"proposed_instructions_{propose_counter['n']:03d}.json"
+            payload = {
+                "components_to_update": components_to_update,
+                "new_texts": new_texts,
+                "candidate_before": candidate,
+            }
+            path.write_text(json.dumps(payload, indent=2))
+        except Exception:
+            pass
+        return new_texts
+
+    ReflectiveMutationProposer.propose_new_texts = _logging_propose_new_texts  # type: ignore[assignment]
+
+    _orig_propose = ReflectiveMutationProposer.propose
+
+    def _logging_propose(self, state):
+        from datetime import datetime
+        try:
+            proposal = _orig_propose(self, state)
+            iter_idx = getattr(state, "i", 0) + 1
+            if proposal is None:
+                path = log_dir / f"proposal_skip_{iter_idx:03d}.txt"
+                path.write_text(f"iteration={iter_idx} skipped/no proposal at {datetime.utcnow().isoformat()}Z\n")
+            else:
+                path = log_dir / f"proposal_success_{iter_idx:03d}.txt"
+                tag = getattr(proposal, "tag", "")
+                path.write_text(f"iteration={iter_idx} proposal tag={tag} at {datetime.utcnow().isoformat()}Z\n")
+            return proposal
+        except Exception as exc:  # noqa: BLE001
+            iter_idx = getattr(state, "i", 0) + 1
+            path = log_dir / f"proposal_error_{iter_idx:03d}.txt"
+            try:
+                path.write_text(f"iteration={iter_idx} exception={exc!r}\n")
+            except Exception:
+                pass
+            raise
+
+    ReflectiveMutationProposer.propose = _logging_propose  # type: ignore[assignment]
 
     gepa = GEPA(
         metric=metric_fn,
