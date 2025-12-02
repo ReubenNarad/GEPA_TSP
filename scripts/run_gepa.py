@@ -47,10 +47,12 @@ from dspy.teleprompt import GEPA
 from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
 from dspy.utils.callback import BaseCallback
 
+from gepa.strategies.instruction_proposal import InstructionProposalSignature
 from gepa_metric import evaluate_and_score  # type: ignore
 from heuristic_bridge import default_block  # type: ignore
 
 PROMPT_FILE = ROOT / "prompt_scratchpad.md"
+INSTR_OVERRIDE_ENV = "GEPA_INSTRUCTION_PROMPT_OVERRIDE_FILE"
 
 
 def load_prompt(section: str) -> str:
@@ -269,6 +271,18 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional JSON string merged into metric environment metadata.",
     )
+    parser.add_argument(
+        "--metadata",
+        type=Path,
+        default=ROOT / "data" / "eval" / "metadata.json",
+        help="Path to metadata.json for evaluation.",
+    )
+    parser.add_argument(
+        "--reflector-context",
+        type=str,
+        default=None,
+        help="Optional freeform text describing the TSP instances (included in the reflector prompt and logs).",
+    )
     parser.add_argument("--save-dir", type=Path, default=Path("runs/gepa"), help="Directory for GEPA summaries.")
     return parser.parse_args()
 
@@ -363,6 +377,15 @@ def main() -> None:
 
     student_prompt = load_prompt("Student Prompt")
     reflector_prompt = load_prompt("Reflector Prompt")
+
+    # Optional override: replace the instruction-proposal prompt the reflector actually sees.
+    override_file = os.environ.get(INSTR_OVERRIDE_ENV)
+    if override_file:
+        try:
+            InstructionProposalSignature.prompt_template = Path(override_file).read_text()
+            print(f"Using instruction proposal override from {override_file}")
+        except OSError:
+            print(f"warning: failed to load instruction proposal override from {override_file}", file=sys.stderr)
 
     headers: Dict[str, str] = {}
     if os.environ.get("OPENROUTER_HTTP_REFERER"):
