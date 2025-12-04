@@ -1,0 +1,98 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{GEPA-TSP: Specializing Lin--Kernighan Heuristics to Target Instance Distributions}
+\author{TODO: Author list}
+\date{TODO: Submission}
+\maketitle
+
+\begin{abstract}
+Placeholder abstract: GEPA as an LLM-guided program search to specialize Concorde's Lin--Kernighan block for target distributions (e.g., Seattle travel-time, clustered, grid). Emphasize distribution-aware tuning, sandboxed integration, reproducibility controls, and observed gains with variance caveats. Note prompt/reward sensitivity; VRP pilot optional.
+\end{abstract}
+
+\section{Introduction}
+\begin{itemize}
+    \item Position GEPA as program-level tuning to specialize solvers for a given instance distribution (e.g., Seattle travel-time vs clustered vs grid), not to produce a universally superior LK.
+    \item Motivation: practical OR workloads are distribution-specific; automation lowers the barrier to per-deployment tuning.
+    \item Contributions bullets (sandboxed method, data/splits, distribution-aware gains, variance/repro controls, prompt sensitivity; VRP pilot optional).
+\end{itemize}
+
+\section{Related Work}
+\begin{itemize}
+    \item Classical LK improvements and Concorde heuristics.
+    \item Learning to optimize solvers (learned heuristics, autotuning, RL for OR).
+    \item LLM-based program synthesis / editing for algorithms; reward shaping for LLM agents.
+\end{itemize}
+
+\section{Method: GEPA for Lin--Kernighan}
+\begin{itemize}
+    \item Sandbox architecture: copy Concorde, sentinel block injection, build/eval loop.
+    \item Metric: wall time primary, optional multi-objective with BB nodes/timeouts.
+    \item Prompts: student and reflector roles; ablation knobs (wall-time-only vs multi-objective).
+    \item C89 constraints and safety (no globals, no I/O, bounded buffers).
+    \item Repro controls: CPU affinity pinning, binary hash logging, and dedup guardrails to isolate heuristic effects.
+    \item Distribution-aware tuning workflow: choose target split, run GEPA, archive specialized LK for that distribution.
+\end{itemize}
+
+\section{Benchmarks and Data}
+\begin{itemize}
+    \item Existing splits: toy20, toy200, tsplib\_random (explicit matrices).
+    \item Structured TSP distributions targeted for specialization: Seattle travel-time, clustered depots, grid/blocked-edge maps; generation details and seeds.
+    \item Optional VRP pilot set and solver hook (if included).
+\end{itemize}
+
+\section{Experimental Setup}
+\begin{itemize}
+    \item Models: student/reflector choices (gpt-5-mini/nano, kimi-k2-thinking), token budgets, temperature.
+    \item GEPA budgets: steps, reflection batch, repeats per instance, timeouts.
+    \item Evaluation protocol: repeats, splits, run\_root layout; hardware summary; variance controls (CPU pinning, fixed compiler/build, binary hash); random seeds left free to sample stochastic LK behavior.
+    \item Baselines: Concorde default LK per distribution; prompt variants.
+    \item Variance reporting: per-instance repeat stddevs, batch-level BB-node spread, multiple GEPA runs to separate signal from noise.
+\end{itemize}
+
+\section{Results: TSP Adaptation}
+\begin{itemize}
+    \item Core table: baseline vs GEPA-specialized LK on each target distribution (wall time, BB nodes, timeout rate).
+    \item Rollout plots (wall time + BB nodes) with smoothing; discuss trends and run-to-run variability.
+    \item Distribution-specific gains and robustness across seeds; note when gains hinge on baseline noise.
+    \item Ablation: steps vs improvement; effect of batch size, reward shaping on LK edits; sensitivity to baseline noise.
+\end{itemize}
+
+\section{Results: Prompt and LM Sensitivity}
+\begin{itemize}
+    \item Compare wall-time-only vs multi-objective reflector prompts; trade-offs.
+    \item LM swap study: gpt-5-mini/nano vs kimi-k2-thinking; stability and regressions.
+    \item Case studies of learned heuristic blocks (qualitative differences).
+\end{itemize}
+
+\section{Results: VRP Pilot}
+\begin{itemize}
+    \item Solver integration description (injection point) and limitations.
+    \item Metrics: wall time, solution quality gaps vs baseline heuristic.
+    \item Early findings; note if gains are modest or distribution-dependent.
+\end{itemize}
+
+\section{Discussion}
+\begin{itemize}
+    \item When GEPA helps most: structured vs unstructured instances; framing as per-distribution tuning.
+    \item Reward design pitfalls (BB-node focus increasing wall time).
+    \item Variance and reproducibility: noisy baselines, stochastic LK seeds, and the benefit of pinning/standardizing builds; recommend multiple independent runs per target distribution.
+    \item Practical deployment: run GEPA to specialize for a known workload (e.g., a city) with few steps on fixed hardware; archive specialized LK blocks.
+\end{itemize}
+
+\section{Conclusion}
+
+\begin{itemize}
+    \item Summary of gains and insights.
+    \item Future work: richer OR tasks, automatic reward balancing, caching/dedup.
+    \item Release plan: code, datasets, candidate blocks.
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

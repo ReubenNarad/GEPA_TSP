@@ -1,0 +1,13 @@
+Session notes (GEPA specialization & reproducibility)
+-----------------------------------------------------
+- Implemented CPU affinity flag in run_concorde_eval/evaluate_candidate/run_gepa to reduce wall-time variance; added binary SHA256 logging to baseline/eval configs.
+- Added helper scripts: test_cpu_affinity_smoke.sh (toy20 pinned/unpinned) and run_gepa_structured_pinned.sh (GEPA on structured_seattle_time with pinning).
+- Fixed GEPA crashes: removed unsupported deduplicate arg; fixed train_example NameError; dedup wrapper now calls original forward to avoid recursion.
+- Added plotting script for best-per-step with error bars; saved latest run plot to out/gepa_20251126T215440Z.png.
+- Latest successful run (runs/gepa_structured/20251126T215440Z_structured_seattle_time_n400_time_hreps):
+  * Baseline (10 repeats): wall ~14.09s, BB nodes 5.0.
+  * Final reported candidate: wall ~12.48s, BB nodes 7.0.
+  * Best candidates: ~9.2s wall, BB ~2.33 (candidates 20251126T220053Z_*_67487cc1 and *_907c7b2d; identical code).
+  * Best code plan: batch-flush fstack when delta>0; if win_cycle already set, drop fstack; otherwise flush or cycle; keep feasibility checks intact; avoids mutating on no-gain.
+- Variance observations: wall/BB spread remains large; many candidates beat baseline (26/31 in latest run), but baseline noise matters; multiple runs recommended.
+- Paper angle adjusted to “distribution-aware specialization” (Seattle/clustered/grid) rather than universal LK improvement; outline updated accordingly with variance/repro controls.
