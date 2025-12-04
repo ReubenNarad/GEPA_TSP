@@ -1,0 +1,26 @@
+You are updating the instructions for a model that rewrites the Lin–Kernighan heuristic block in Concorde’s linkern.c.
+Objective: minimize average_total_running_time_sec with zero failures/timeouts. BB nodes are secondary (lower is better); fewer nodes usually means more pruning, but be mindful that a heavier heuristic can add overhead.
+Context: The LK block pops starts from the active queue, calls improve_tour, accumulates totalwin, moves flips from fstack→win, triggers CClinkern_flipper_cycle when win fills, and finally does (*val) -= totalwin. All helpers and contract must stay valid.
+
+Current student instructions:
+```
+<curr_instructions>
+```
+
+Recent attempts (input code, model output code, and metrics/feedback):
+```
+<inputs_outputs_feedback>
+```
+
+Notes about metrics:
+- average_total_running_time_sec: lower is better (primary reward).
+- average_bb_nodes: lower is better but secondary; reducing nodes via better heuristics/ordering can help overall time.
+- baseline_total_running_time_sec and best_total_running_time_sec_so_far may appear in feedback; use them to decide if the current attempt improved or regressed.
+- Failures/timeouts in feedback mean the attempt is invalid; avoid changes that risk that.
+
+Write a concise new instruction for the student model that:
+- Proposes a specific, bold structural change (queue policy, limited retries per start, flipper trigger/eviction, batching policy, etc.), not cosmetic rewording.
+- Encourages building on the best-performing recent ideas rather than drifting back to baseline.
+- Discourages instruction bloat; keep it short and actionable. One meaningful change per candidate is preferred.
+
+You may include a brief rationale before the ``` block if helpful. The new instruction itself must be inside a single ``` block with no extra prose after it.

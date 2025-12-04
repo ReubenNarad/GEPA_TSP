@@ -47,6 +47,7 @@ from dspy.teleprompt import GEPA
 from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
 from dspy.utils.callback import BaseCallback
 
+from gepa import EvaluationBatch
 from gepa.proposer.reflective_mutation.reflective_mutation import ReflectiveMutationProposer
 from gepa.strategies.instruction_proposal import InstructionProposalSignature
 from gepa_metric import evaluate_and_score  # type: ignore
@@ -153,6 +154,7 @@ def build_metric(
     default_repeats: int,
     default_timeout: Optional[float],
     default_cpu_affinity: Optional[str],
+    default_metadata: Path,
     environment: Optional[Dict[str, Any]],
     run_root: Optional[Path],
 ) -> callable:
@@ -194,6 +196,7 @@ def build_metric(
             repeats=repeats,
             timeout=timeout,
             cpu_affinity=cpu_affinity,
+            metadata=default_metadata,
             environment=env_payload,
             run_root=run_root,
         )
@@ -336,6 +339,7 @@ def baseline_evaluation(
         split=args.split,
         repeats=baseline_repeats,
         timeout=args.timeout,
+        metadata=args.metadata,
         environment=environment,
         run_root=run_root,
     )
@@ -420,6 +424,7 @@ def main() -> None:
         default_repeats=args.repeats,
         default_timeout=args.timeout,
         default_cpu_affinity=args.cpu_affinity,
+        default_metadata=args.metadata,
         environment=environment,
         run_root=run_root,
     )
@@ -494,6 +499,39 @@ def main() -> None:
 
     ReflectiveMutationProposer.propose = _logging_propose  # type: ignore[assignment]
 
+    # --- Caching wrapper to avoid re-sampling/rerunning identical instructions ---
+    evaluation_cache: Dict[str, Dict[str, Any]] = {}
+    _orig_evaluate = DspyAdapter.evaluate
+
+    def _caching_evaluate(self, batch, candidate, capture_traces=False):
+        instructions_text = candidate.get("rewriter")
+        cached = evaluation_cache.get(instructions_text) if instructions_text else None
+        if cached:
+            # Provide trajectories only when requested and available.
+            traj = cached.get("trajectories") if capture_traces else None
+            if not capture_traces or traj is not None:
+                try:
+                    return EvaluationBatch(
+                        outputs=cached.get("outputs", []),
+                        scores=cached.get("scores", []),
+                        trajectories=traj,
+                    )
+                except Exception:
+                    pass  # fallback to a real evaluation on any cache decode issues
+
+        res = _orig_evaluate(self, batch, candidate, capture_traces=capture_traces)
+        try:
+            evaluation_cache[instructions_text] = {
+                "outputs": res.outputs,
+                "scores": res.scores,
+                "trajectories": res.trajectories,
+            }
+        except Exception:
+            pass
+        return res
+
+    DspyAdapter.evaluate = _caching_evaluate  # type: ignore[assignment]
+
     gepa = GEPA(
         metric=metric_fn,
         reflection_lm=reflector_lm,
@@ -542,6 +580,7 @@ def main() -> None:
         repeats=args.repeats,
         timeout=args.timeout,
         cpu_affinity=args.cpu_affinity,
+        metadata=args.metadata,
         environment=environment,
         run_root=run_root,
     )

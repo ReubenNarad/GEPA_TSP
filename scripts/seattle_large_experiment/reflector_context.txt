@@ -1,0 +1,11 @@
+Seattle travel-time instances (n≈400) from the city road network.
+
+Facts for reflection:
+- Edge weights are travel times in seconds on the road graph (non-Euclidean).
+- No geometric shortcuts; path costs come from shortest paths on the network.
+- Goal: minimize average total running time with zero failures/timeouts; BB nodes are secondary (fewer nodes usually correlates with faster solves, but a more complex heuristic can add overhead).
+
+Guidance for the reflector:
+- Favor bold, structural changes that have worked: smarter start selection/queuing, limited extra retries per start, batching/eviction policies for fstack→win, and smarter flipper-cycle triggering.
+- Encourage building on best-performing recent candidates (reuse ideas that yielded the lowest total time).
+- Discourage cosmetic prompt bloat; keep instructions concise and focused on actionable algorithm changes. Give the student room to make one meaningful change per candidate.

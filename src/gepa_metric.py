@@ -47,6 +47,7 @@ def evaluate_and_score(
     repeats: int = 1,
     timeout: Optional[float] = None,
     cpu_affinity: Optional[str] = None,
+    metadata: Optional[Path] = None,
     environment: Optional[Dict[str, Any]] = None,
     run_root: Optional[Path] = None,
 ) -> Tuple[float, str, Dict[str, Any]]:
@@ -89,6 +90,7 @@ def evaluate_and_score(
         repeats=repeats,
         timeout=timeout,
         cpu_affinity=cpu_affinity,
+        metadata_path=metadata,
         environment=environment,
         run_root=run_root,
     )

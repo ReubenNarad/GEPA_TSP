@@ -50,6 +50,12 @@ def parse_args(argv=None):
         help="Dataset split to benchmark (default: toy20).",
     )
     parser.add_argument(
+        "--metadata",
+        type=Path,
+        default=REPO_ROOT / "data" / "eval" / "metadata.json",
+        help="Path to the dataset metadata JSON (default: data/eval/metadata.json).",
+    )
+    parser.add_argument(
         "--repeats",
         type=int,
         default=1,
@@ -123,6 +129,7 @@ def main(argv=None) -> int:
         repeats=args.repeats,
         timeout=args.timeout,
         cpu_affinity=args.cpu_affinity,
+        metadata_path=args.metadata,
         sandbox_root=args.sandbox_root,
         keep_sandbox=args.keep_sandbox,
         environment=extra_env,
