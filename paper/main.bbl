@@ -1,14 +1,74 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Agrawal et~al.(2025)Agrawal, Tan, Soylu, Ziems, Khare, Opsahl-Ong, Singhvi, Shandilya, Ryan, Jiang, Potts, Sen, Dimakis, Stoica, Klein, Zaharia, and Khattab]{Agrawal2025GEPA}
+Agrawal, L.~A., Tan, S., Soylu, D., Ziems, N., Khare, R., Opsahl-Ong, K., Singhvi, A., Shandilya, H., Ryan, M.~J., Jiang, M., Potts, C., Sen, K., Dimakis, A.~G., Stoica, I., Klein, D., Zaharia, M., and Khattab, O.
+\newblock {GEPA}: Reflective prompt evolution can outperform reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2507.19457}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2507.19457}.
+
 \bibitem[Applegate et~al.(2006)Applegate, Bixby, Chv{\'a}tal, and Cook]{Applegate2006TSP}
 Applegate, D.~L., Bixby, R.~E., Chv{\'a}tal, V., and Cook, W.~J.
 \newblock \emph{The Traveling Salesman Problem: A Computational Study}.
 \newblock Princeton University Press, 2006.
+
+\bibitem[Bello et~al.(2017)Bello, Pham, Le, Norouzi, and Bengio]{Bello2017NCO}
+Bello, I., Pham, H., Le, Q.~V., Norouzi, M., and Bengio, S.
+\newblock Neural combinatorial optimization with reinforcement learning.
+\newblock In \emph{International Conference on Learning Representations}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1611.09940}.
+
+\bibitem[d.~O.~da Costa et~al.(2020)d.~O.~da Costa, Rhuggenaath, Zhang, and Akcay]{Costa2020Learn2Opt}
+d.~O.~da Costa, P.~R., Rhuggenaath, J., Zhang, Y., and Akcay, A.
+\newblock Learning 2-opt heuristics for the traveling salesman problem via deep reinforcement learning.
+\newblock In \emph{Proceedings of The 12th Asian Conference on Machine Learning}, volume 129 of \emph{Proceedings of Machine Learning Research}, pp.\  465--480. PMLR, 2020.
+\newblock URL \url{https://proceedings.mlr.press/v129/costa20a.html}.
+
+\bibitem[Deudon et~al.(2018)Deudon, Cournut, Lacoste, Adulyasak, and Rousseau]{Deudon2018TSPPolicyGrad}
+Deudon, M., Cournut, P., Lacoste, A., Adulyasak, Y., and Rousseau, L.
+\newblock Learning heuristics for the {TSP} by policy gradient.
+\newblock In \emph{Integration of Constraint Programming, Artificial Intelligence, and Operations Research (CPAIOR 2018)}, volume 10848 of \emph{Lecture Notes in Computer Science}, pp.\  170--181. Springer, 2018.
+\newblock \doi{10.1007/978-3-319-93031-2_12}.
+
+\bibitem[Helsgaun(2000)]{Helsgaun2000LKH}
+Helsgaun, K.
+\newblock An effective implementation of the lin--kernighan traveling salesman heuristic.
+\newblock \emph{European Journal of Operational Research}, 126\penalty0 (1):\penalty0 106--130, 2000.
+\newblock \doi{10.1016/S0377-2217(99)00284-2}.
+
+\bibitem[Hutter et~al.(2009)Hutter, Hoos, Leyton-Brown, and St{\"u}tzle]{Hutter2009ParamILS}
+Hutter, F., Hoos, H.~H., Leyton-Brown, K., and St{\"u}tzle, T.
+\newblock {ParamILS}: An automatic algorithm configuration framework.
+\newblock \emph{Journal of Artificial Intelligence Research}, 36:\penalty0 267--306, 2009.
+\newblock \doi{10.1613/jair.2861}.
+
+\bibitem[Kerschke et~al.(2018)Kerschke, Kotthoff, Bossek, Hoos, and Trautmann]{Kerschke2018TSPSolverComplementarity}
+Kerschke, P., Kotthoff, L., Bossek, J., Hoos, H.~H., and Trautmann, H.
+\newblock Leveraging {TSP} solver complementarity through machine learning.
+\newblock \emph{Evolutionary Computation}, 26\penalty0 (4):\penalty0 597--620, 2018.
+\newblock \doi{10.1162/evco_a_00215}.
+
+\bibitem[Kerschke et~al.(2019)Kerschke, Hoos, Neumann, and Trautmann]{Kerschke2019AlgSelectionSurvey}
+Kerschke, P., Hoos, H.~H., Neumann, F., and Trautmann, H.
+\newblock Automated algorithm selection: Survey and perspectives.
+\newblock \emph{Evolutionary Computation}, 27\penalty0 (1):\penalty0 3--45, 2019.
+\newblock \doi{10.1162/evco_a_00242}.
+
+\bibitem[Khattab et~al.(2023)Khattab, Singhvi, Maheshwari, Zhang, Santhanam, Vardhamanan, Haq, Sharma, Joshi, Moazam, Miller, Zaharia, and Potts]{Khattab2023DSPy}
+Khattab, O., Singhvi, A., Maheshwari, P., Zhang, Z., Santhanam, K., Vardhamanan, S., Haq, S., Sharma, A., Joshi, T.~T., Moazam, H., Miller, H., Zaharia, M., and Potts, C.
+\newblock {DSPy}: Compiling declarative language model calls into self-improving pipelines.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.03714}.
+
+\bibitem[Kool et~al.(2019)Kool, van Hoof, and Welling]{Kool2019AttentionRouting}
+Kool, W., van Hoof, H., and Welling, M.
+\newblock Attention, learn to solve routing problems!
+\newblock In \emph{International Conference on Learning Representations}, 2019.
+\newblock URL \url{https://arxiv.org/abs/1803.08475}.
 
 \bibitem[Lin \& Kernighan(1973)Lin and Kernighan]{LinKernighan1973}
 Lin, S. and Kernighan, B.~W.
