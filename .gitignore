@@ -15,17 +15,17 @@ tmp.*
 *.sol
 data/eval/dev/
 notes.md
-paper/
+# paper/
 random_explicit_200_/
 random_explicit_300_/
 random_explicit_400_/
 random_explicit_200_
 random_explicit_300_
 random_explicit_400_
-scripts/generators/
+# scripts/generators/
 scripts/plot_gepa_metrics_smoothed.py
-scripts/plot_tsp_with_background.py
+# scripts/plot_tsp_with_background.py
 scripts/run_gepa_kimi-k2-thinking.sh
-scripts/run_gepa_structured_sets.sh
-scripts/visualize_instances.py
-src/instance_sampler.py
+# scripts/run_gepa_structured_sets.sh
+# scripts/visualize_instances.py
+# src/instance_sampler.py
