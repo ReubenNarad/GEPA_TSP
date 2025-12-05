@@ -25,7 +25,7 @@ for seed in $(seq 7000 7019); do
 done
 
 echo "Generating random explicit test instances..."
-for seed in $(seq 8000 8049); do
+for seed in $(seq 8000 8199); do
   tsp_path="${EXP_DIR}/random_explicit_test_seed${seed}.tsp"
   python "${ROOT_DIR}/scripts/generators/gen_synthetic_structured.py" \
     --kind random_explicit \

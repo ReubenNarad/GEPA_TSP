@@ -1,0 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{forloop}[2024/12/04 Minimal for-loop helpers]
+\RequirePackage{ifthen}
+
+\newcommand{\forloop}[5][1]{%
+  \setcounter{#2}{#3}%
+  \whiledo{#4}{%
+    #5%
+    \addtocounter{#2}{#1}%
+  }%
+}
+
+\endinput

@@ -27,7 +27,7 @@ for seed in $(seq 5000 5019); do
 done
 
 echo "Generating clustered test instances (explicit matrix, 50% intra-cluster discount)..."
-for seed in $(seq 6000 6049); do
+for seed in $(seq 6000 6199); do
   tsp_path="${EXP_DIR}/clustered_test_seed${seed}.tsp"
   python "${ROOT_DIR}/scripts/generators/gen_synthetic_structured.py" \
     --kind clustered \

@@ -46,7 +46,7 @@ import json, pathlib
 root = pathlib.Path("${ROOT_DIR}")
 exp = root / "data/eval/experiments/seattle_time_experiment"
 instances = []
-for seed in range(2025112500, 2025112520):
+for seed in range(2025112500, 2025112699):
     tsp = exp / f"structured_seattle_time_val_seed{seed}.tsp"
     instances.append({
         "id": f"structured_seattle_time_val_seed{seed}",

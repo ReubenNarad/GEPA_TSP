@@ -103,9 +103,9 @@ We are interested in minimizing both $t$ and $n$ jointly: a candidate $(t', n')$
 - Thus, we focused on 400 node instances, checking that indeed Concorde typically used 4-6 BB nodes in the solving process
 - For our experiments, we defined 3 types of TSP instance of increasing structure, with generators to sample new instances:
     
-    - 2d Euclidian, Uniform sampling (basic TSP)
-    - Clusters: For a given instance, we define the clusters (2-4, with centers and covariances drawn uniformly). Mostly Euclidian, but with a 50\% in-cluster travelling discount (to add structure)
-    - 
+    - Uniform: $n=400$ iid points in the unit square with EUC\_2D distances.
+    - Clustered: $k=4$ anisotropic Gaussians in the unit square (centers uniform; eigenvalues $\sim$ U[0.001, 0.02] with random rotations), EUC\_2D distances with a 0.5$\times$ intra-cluster discount when using explicit matrices.
+    - Seattle: 400 road-network nodes sampled uniformly from the largest connected component of the Seattle OSM driving graph (lat 47.58--47.64, lon $-122.36$--$-122.30$); edge weights are shortest path travel times, obtained from running Dijkstra's algorithm across all 400 nodes
 - For a given GEPA candidate, the reward was 
 
 \subsection{Gepa Details}
