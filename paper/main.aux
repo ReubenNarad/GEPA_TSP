@@ -4,26 +4,31 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{DSPY}
 \citation{GEPA!}
-\citation{LinKernighan1973}
-\citation{Helsgaun2000LKH}
-\citation{Applegate2006TSP}
-\citation{Bello2017NCO,Kool2019AttentionRouting,Deudon2018TSPPolicyGrad,Costa2020Learn2Opt,Kerschke2018TSPSolverComplementarity}
+\citation{Bello2017NCO,Kool2019AttentionRouting}
+\citation{Deudon2018TSPPolicyGrad,Costa2020Learn2Opt}
+\citation{Kerschke2018TSPSolverComplementarity}
 \citation{Ye2024ReEvo}
-\citation{Agrawal2025GEPA,Khattab2023DSPy}
-\citation{Hutter2009ParamILS,Hoos2011AutonomousSearchChapter,Kerschke2019AlgSelectionSurvey}
+\citation{Agrawal2025GEPA}
+\citation{Khattab2023DSPy}
+\citation{Hutter2009ParamILS}
+\citation{Kerschke2019AlgSelectionSurvey}
+\newlabel{fig:gepa-pipeline}{{1}{3}{GEPA pipeline for modifying Concorde's LK heuristic}{figure.1}{}}
+\newlabel{fig:benchmarks}{{2}{5}{Example TSP instances for the three benchmarks: uniform Euclidean (left), clustered Euclidean (middle), and Seattle road network with travel-time distances (right)}{figure.2}{}}
+\newlabel{fig:training-curves}{{3}{5}{GEPA training performance over validation set on the three TSP benchmarks, under a fixed budget of 60 validation evaluations per distribution. Each panel shows average runtime (left/blue) and average branch-and-bound (BB) nodes (right/green) on 20 validation instances, with bands indicating standard deviation and the vanilla Concorde baseline shown in red. Top left: uniform Euclidean; top right: clustered Euclidean; bottom: Seattle travel-time. The GEPA iteration circled in red in each panel is the final candidate we select and evaluate on the 200-instance test set in Table~\ref {tab:main-results}}{figure.3}{}}
+\citation{Ye2024ReEvo}
+\newlabel{tab:main-results}{{1}{6}{Average runtime and branch-and-bound (BB) nodes on the 200-instance test sets. GEPA best denotes the single best heuristic found by GEPA for each distribution. Relative differences are computed as (GEPA $-$ baseline) / baseline}{table.1}{}}
+\newlabel{appendix:prompts}{{A}{7}{}{appendix.A}{}}
 \bibstyle{icml2025}
 \bibdata{references}
 \bibcite{Agrawal2025GEPA}{{1}{2025}{{Agrawal et~al.}}{{Agrawal, Tan, Soylu, Ziems, Khare, Opsahl-Ong, Singhvi, Shandilya, Ryan, Jiang, Potts, Sen, Dimakis, Stoica, Klein, Zaharia, and Khattab}}}
-\bibcite{Applegate2006TSP}{{2}{2006}{{Applegate et~al.}}{{Applegate, Bixby, Chv{\'a}tal, and Cook}}}
-\bibcite{Bello2017NCO}{{3}{2017}{{Bello et~al.}}{{Bello, Pham, Le, Norouzi, and Bengio}}}
-\bibcite{Costa2020Learn2Opt}{{4}{2020}{{d.~O.~da Costa et~al.}}{{d.~O.~da Costa, Rhuggenaath, Zhang, and Akcay}}}
-\bibcite{Deudon2018TSPPolicyGrad}{{5}{2018}{{Deudon et~al.}}{{Deudon, Cournut, Lacoste, Adulyasak, and Rousseau}}}
-\bibcite{Helsgaun2000LKH}{{6}{2000}{{Helsgaun}}{{}}}
-\bibcite{Hutter2009ParamILS}{{7}{2009}{{Hutter et~al.}}{{Hutter, Hoos, Leyton-Brown, and St{\"u}tzle}}}
-\bibcite{Kerschke2018TSPSolverComplementarity}{{8}{2018}{{Kerschke et~al.}}{{Kerschke, Kotthoff, Bossek, Hoos, and Trautmann}}}
-\bibcite{Kerschke2019AlgSelectionSurvey}{{9}{2019}{{Kerschke et~al.}}{{Kerschke, Hoos, Neumann, and Trautmann}}}
-\bibcite{Khattab2023DSPy}{{10}{2023}{{Khattab et~al.}}{{Khattab, Singhvi, Maheshwari, Zhang, Santhanam, Vardhamanan, Haq, Sharma, Joshi, Moazam, Miller, Zaharia, and Potts}}}
-\bibcite{Kool2019AttentionRouting}{{11}{2019}{{Kool et~al.}}{{Kool, van Hoof, and Welling}}}
-\bibcite{LinKernighan1973}{{12}{1973}{{Lin \& Kernighan}}{{Lin and Kernighan}}}
-\bibcite{Ye2024ReEvo}{{13}{2024}{{Ye et~al.}}{{Ye, Wang, Cao, Berto, Hua, Kim, Park, and Song}}}
-\gdef \@abspage@last{4}
+\bibcite{Bello2017NCO}{{2}{2017}{{Bello et~al.}}{{Bello, Pham, Le, Norouzi, and Bengio}}}
+\newlabel{appendix:reflections}{{B}{8}{}{appendix.B}{}}
+\bibcite{Costa2020Learn2Opt}{{3}{2020}{{d.~O.~da Costa et~al.}}{{d.~O.~da Costa, Rhuggenaath, Zhang, and Akcay}}}
+\bibcite{Deudon2018TSPPolicyGrad}{{4}{2018}{{Deudon et~al.}}{{Deudon, Cournut, Lacoste, Adulyasak, and Rousseau}}}
+\bibcite{Hutter2009ParamILS}{{5}{2009}{{Hutter et~al.}}{{Hutter, Hoos, Leyton-Brown, and St{\"u}tzle}}}
+\bibcite{Kerschke2018TSPSolverComplementarity}{{6}{2018}{{Kerschke et~al.}}{{Kerschke, Kotthoff, Bossek, Hoos, and Trautmann}}}
+\bibcite{Kerschke2019AlgSelectionSurvey}{{7}{2019}{{Kerschke et~al.}}{{Kerschke, Hoos, Neumann, and Trautmann}}}
+\bibcite{Khattab2023DSPy}{{8}{2023}{{Khattab et~al.}}{{Khattab, Singhvi, Maheshwari, Zhang, Santhanam, Vardhamanan, Haq, Sharma, Joshi, Moazam, Miller, Zaharia, and Potts}}}
+\bibcite{Kool2019AttentionRouting}{{9}{2019}{{Kool et~al.}}{{Kool, van Hoof, and Welling}}}
+\bibcite{Ye2024ReEvo}{{10}{2024}{{Ye et~al.}}{{Ye, Wang, Cao, Berto, Hua, Kim, Park, and Song}}}
+\gdef \@abspage@last{9}

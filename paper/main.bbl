@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,11 +10,6 @@ Agrawal, L.~A., Tan, S., Soylu, D., Ziems, N., Khare, R., Opsahl-Ong, K., Singhv
 \newblock {GEPA}: Reflective prompt evolution can outperform reinforcement learning.
 \newblock \emph{arXiv preprint arXiv:2507.19457}, 2025.
 \newblock URL \url{https://arxiv.org/abs/2507.19457}.
-
-\bibitem[Applegate et~al.(2006)Applegate, Bixby, Chv{\'a}tal, and Cook]{Applegate2006TSP}
-Applegate, D.~L., Bixby, R.~E., Chv{\'a}tal, V., and Cook, W.~J.
-\newblock \emph{The Traveling Salesman Problem: A Computational Study}.
-\newblock Princeton University Press, 2006.
 
 \bibitem[Bello et~al.(2017)Bello, Pham, Le, Norouzi, and Bengio]{Bello2017NCO}
 Bello, I., Pham, H., Le, Q.~V., Norouzi, M., and Bengio, S.
@@ -33,12 +28,6 @@ Deudon, M., Cournut, P., Lacoste, A., Adulyasak, Y., and Rousseau, L.
 \newblock Learning heuristics for the {TSP} by policy gradient.
 \newblock In \emph{Integration of Constraint Programming, Artificial Intelligence, and Operations Research (CPAIOR 2018)}, volume 10848 of \emph{Lecture Notes in Computer Science}, pp.\  170--181. Springer, 2018.
 \newblock \doi{10.1007/978-3-319-93031-2_12}.
-
-\bibitem[Helsgaun(2000)]{Helsgaun2000LKH}
-Helsgaun, K.
-\newblock An effective implementation of the lin--kernighan traveling salesman heuristic.
-\newblock \emph{European Journal of Operational Research}, 126\penalty0 (1):\penalty0 106--130, 2000.
-\newblock \doi{10.1016/S0377-2217(99)00284-2}.
 
 \bibitem[Hutter et~al.(2009)Hutter, Hoos, Leyton-Brown, and St{\"u}tzle]{Hutter2009ParamILS}
 Hutter, F., Hoos, H.~H., Leyton-Brown, K., and St{\"u}tzle, T.
@@ -69,12 +58,6 @@ Kool, W., van Hoof, H., and Welling, M.
 \newblock Attention, learn to solve routing problems!
 \newblock In \emph{International Conference on Learning Representations}, 2019.
 \newblock URL \url{https://arxiv.org/abs/1803.08475}.
-
-\bibitem[Lin \& Kernighan(1973)Lin and Kernighan]{LinKernighan1973}
-Lin, S. and Kernighan, B.~W.
-\newblock An effective heuristic algorithm for the traveling-salesman problem.
-\newblock \emph{Operations Research}, 21\penalty0 (2):\penalty0 498--516, 1973.
-\newblock \doi{10.1287/opre.21.2.498}.
 
 \bibitem[Ye et~al.(2024)Ye, Wang, Cao, Berto, Hua, Kim, Park, and Song]{Ye2024ReEvo}
 Ye, H., Wang, J., Cao, Z., Berto, F., Hua, C., Kim, H., Park, J., and Song, G.

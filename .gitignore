@@ -29,3 +29,4 @@ scripts/run_gepa_kimi-k2-thinking.sh
 # scripts/run_gepa_structured_sets.sh
 # scripts/visualize_instances.py
 # src/instance_sampler.py
+paper/old/
